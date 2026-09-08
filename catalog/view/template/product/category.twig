@@ -101,8 +101,10 @@
         </div>
       {% endif %}
       {% if not categories and not products %}
-        <p>{{ text_no_results }}</p>
-        <div class="text-end"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>
+        <div class="va-empty">
+          <p>{{ text_no_results }}</p>
+          <div class="text-center mt-3"><a href="{{ continue }}" class="btn btn-outline-dark">{{ button_continue }}</a></div>
+        </div>
       {% endif %}
       {{ content_bottom }}</div>
     {{ column_right }}</div>
