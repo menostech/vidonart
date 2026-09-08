@@ -1,5 +1,5 @@
-// ============================================================
-// Vidon Art — Modern Oriental theme
+﻿// ============================================================
+// Vidon Art 鈥?Modern Oriental theme
 // ============================================================
 
 // ---------- Design tokens ----------
@@ -44,7 +44,7 @@ legend {
 }
 
 label {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: .08em;
@@ -97,7 +97,7 @@ label {
 #top {
   background-color: var(--va-paper);
   border-bottom: 1px solid var(--va-border);
-  font-size: .8125rem;
+  font-size: .875rem;
 }
 
 #top ul.list-inline {
@@ -107,7 +107,7 @@ label {
 #top .list-inline-item > a,
 #top .list-inline-item .dropdown > a,
 #top .list-inline-item .dropdown > span {
-  font-size: .8125rem;
+  font-size: .875rem;
   color: var(--va-text);
   line-height: 36px;
   vertical-align: middle;
@@ -167,7 +167,7 @@ label {
 
 #search .form-control-lg {
   height: 46px;
-  font-size: .875rem;
+  font-size: .9375rem;
   line-height: 20px;
   padding: 0 12px;
   border-color: var(--va-border);
@@ -175,7 +175,7 @@ label {
 }
 
 #search .btn-lg {
-  font-size: .875rem;
+  font-size: .9375rem;
   line-height: 18px;
   padding: .57rem 28px;
 }
@@ -186,7 +186,7 @@ label {
 }
 
 #cart .btn-lg {
-  font-size: .875rem;
+  font-size: .9375rem;
   line-height: 18px;
   height: 46px;
   padding: 0 24px;
@@ -267,7 +267,7 @@ label {
 }
 
 #menu .dropdown-item {
-  font-size: .875rem;
+  font-size: .9375rem;
   padding: .4rem .75rem;
   color: var(--va-ink);
 }
@@ -337,7 +337,7 @@ label {
   background-color: transparent;
 
   > li.breadcrumb-item {
-    font-size: .8125rem;
+    font-size: .875rem;
     padding: 0 14px 0 0;
     white-space: nowrap;
 
@@ -367,7 +367,7 @@ label {
   border-radius: .125rem;
   text-transform: uppercase;
   letter-spacing: .12em;
-  font-size: .8125rem;
+  font-size: .875rem;
   font-weight: 600;
   padding: .65rem 1.6rem;
 }
@@ -416,7 +416,7 @@ label {
 .form-label {
   text-transform: uppercase;
   letter-spacing: .08em;
-  font-size: .75rem;
+  font-size: .8125rem;
   color: var(--va-text);
 }
 
@@ -424,12 +424,12 @@ label {
   background-color: var(--va-surface);
   border-color: var(--va-border);
   border-radius: .125rem;
-  font-size: .8125rem;
+  font-size: .875rem;
   color: var(--va-text);
 }
 
 .invalid-feedback {
-  font-size: .8125rem;
+  font-size: .875rem;
 }
 
 div.required .col-form-label:before,
@@ -478,7 +478,7 @@ div.required .form-label:before {
   z-index: 2;
   background: var(--va-gold);
   color: var(--va-ink);
-  font-size: .6875rem;
+  font-size: .75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .12em;
@@ -491,7 +491,7 @@ div.required .form-label:before {
 }
 
 .product-thumb .description h4 {
-  font-size: .9375rem;
+  font-size: 1rem;
   font-weight: 500;
   margin-bottom: 6px;
   display: -webkit-box;
@@ -512,7 +512,7 @@ div.required .form-label:before {
 .product-thumb .va-customize {
   display: inline-block;
   margin-top: 8px;
-  font-size: .75rem;
+  font-size: .8125rem;
   font-weight: 600;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -577,7 +577,7 @@ div.required .form-label:before {
 /* ---------- price / rating ---------- */
 .price {
   color: var(--va-ink);
-  font-size: .9375rem;
+  font-size: 1rem;
 }
 
 .price-new {
@@ -587,12 +587,12 @@ div.required .form-label:before {
 .price-old {
   color: var(--va-gold-dark);
   text-decoration: line-through;
-  font-size: .8125rem;
+  font-size: .875rem;
 }
 
 .price-tax {
   color: var(--va-text);
-  font-size: .75rem;
+  font-size: .8125rem;
   display: block;
 }
 
@@ -721,7 +721,7 @@ footer h5 {
 footer a {
   color: #B9B4AA;
   text-decoration: none;
-  font-size: .875rem;
+  font-size: .9375rem;
 }
 
 footer a:hover {
@@ -746,7 +746,7 @@ footer .list-unstyled li {
 }
 
 .va-footer-tagline {
-  font-size: .8125rem;
+  font-size: .875rem;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--va-gold);
@@ -754,7 +754,7 @@ footer .list-unstyled li {
 }
 
 .va-footer-about {
-  font-size: .875rem;
+  font-size: .9375rem;
   color: #B9B4AA;
   line-height: 1.8;
 }
@@ -763,7 +763,7 @@ footer .list-unstyled li {
   color: #B9B4AA;
   text-transform: none;
   letter-spacing: .02em;
-  font-size: .8125rem;
+  font-size: .875rem;
 }
 
 .va-newsletter .form-control {
@@ -807,7 +807,7 @@ footer hr {
 
 .va-footer-bottom p {
   margin: 0;
-  font-size: .8125rem;
+  font-size: .875rem;
   color: #8B867C;
 }
 
@@ -825,7 +825,7 @@ footer hr {
 }
 
 #cookie div {
-  font-size: .875rem;
+  font-size: .9375rem;
   color: #E8E4DC;
 }
 
@@ -837,7 +837,7 @@ footer hr {
 }
 
 .va-hero-kicker {
-  font-size: .8125rem;
+  font-size: .875rem;
   letter-spacing: .3em;
   text-transform: uppercase;
   color: var(--va-tea-dark);
@@ -894,7 +894,7 @@ footer hr {
 }
 
 .va-view-all {
-  font-size: .8125rem;
+  font-size: .875rem;
   font-weight: 600;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -946,7 +946,7 @@ footer hr {
 }
 
 .va-tile-link {
-  font-size: .8125rem;
+  font-size: .875rem;
   font-weight: 600;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -1011,7 +1011,7 @@ footer hr {
 }
 
 .va-custom-copy {
-  font-size: .875rem;
+  font-size: .9375rem;
   color: var(--va-text);
   margin-bottom: 12px;
 }
@@ -1026,7 +1026,7 @@ footer hr {
 }
 
 .va-trust li {
-  font-size: .8125rem;
+  font-size: .875rem;
   color: var(--va-text);
 }
 
@@ -1039,7 +1039,7 @@ footer hr {
 .va-custom-category label {
   text-transform: none;
   letter-spacing: normal;
-  font-size: .9375rem;
+  font-size: 1rem;
   color: var(--va-ink);
 }
 
@@ -1076,12 +1076,12 @@ footer hr {
 
 .va-step-body strong {
   display: block;
-  font-size: .9375rem;
+  font-size: 1rem;
   margin-bottom: 2px;
 }
 
 .va-step-body span {
-  font-size: .8125rem;
+  font-size: .875rem;
   color: var(--va-text);
 }
 
