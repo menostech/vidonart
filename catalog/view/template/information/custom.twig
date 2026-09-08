@@ -1,0 +1,104 @@
+{{ header }}
+<div id="information-custom" class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+      <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  <div class="row">{{ column_left }}
+    <div id="content" class="col">{{ content_top }}
+      <h1>{{ heading_title }}</h1>
+      <p class="mb-4">{{ text_intro }}</p>
+      <div class="row g-5">
+        <div class="col-lg-7">
+          <form id="form-custom" action="{{ send }}" method="post" data-oc-toggle="ajax">
+            <fieldset>
+              <legend>{{ text_category_label }}</legend>
+              <div class="mb-3 required">
+                <div class="row g-3 va-custom-category">
+                  <div class="col-4">
+                    <div class="form-check">
+                      <input type="radio" name="category" value="jewelry" id="input-category-jewelry" class="form-check-input"/>
+                      <label for="input-category-jewelry" class="form-check-label">{{ text_jewelry }}</label>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="form-check">
+                      <input type="radio" name="category" value="handbags" id="input-category-handbags" class="form-check-input"/>
+                      <label for="input-category-handbags" class="form-check-label">{{ text_handbags }}</label>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="form-check">
+                      <input type="radio" name="category" value="home-living" id="input-category-home-living" class="form-check-input"/>
+                      <label for="input-category-home-living" class="form-check-label">{{ text_home_living }}</label>
+                    </div>
+                  </div>
+                </div>
+                <div id="error-category" class="invalid-feedback"></div>
+              </div>
+              <div class="row mb-3">
+                <label for="input-product-reference" class="col-sm-4 col-form-label">{{ entry_product_reference }}</label>
+                <div class="col-sm-8">
+                  <input type="text" name="product_reference" value="{{ product_reference }}" placeholder="{{ placeholder_reference }}" id="input-product-reference" class="form-control"/>
+                  <div id="error-product_reference" class="invalid-feedback"></div>
+                </div>
+              </div>
+              <div class="row mb-3 required">
+                <label for="input-message" class="col-sm-4 col-form-label">{{ entry_message }}</label>
+                <div class="col-sm-8">
+                  <textarea name="message" rows="7" placeholder="{{ placeholder_idea }}" id="input-message" class="form-control"></textarea>
+                  <div id="error-message" class="invalid-feedback"></div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="input-budget" class="col-sm-4 col-form-label">{{ entry_budget }}</label>
+                <div class="col-sm-8">
+                  <select name="budget" id="input-budget" class="form-select">
+                    <option value=""></option>
+                    <option value="under-200">{{ budget_under_200 }}</option>
+                    <option value="200-500">{{ budget_200_500 }}</option>
+                    <option value="500-1000">{{ budget_500_1000 }}</option>
+                    <option value="1000-plus">{{ budget_1000_plus }}</option>
+                  </select>
+                  <div id="error-budget" class="invalid-feedback"></div>
+                </div>
+              </div>
+              <div class="row mb-3 required">
+                <label for="input-email" class="col-sm-4 col-form-label">{{ entry_email }}</label>
+                <div class="col-sm-8">
+                  <input type="text" name="email" value="{{ email }}" id="input-email" class="form-control"/>
+                  <div id="error-email" class="invalid-feedback"></div>
+                </div>
+              </div>
+            </fieldset>
+            <div class="text-end">
+              <button type="submit" class="btn btn-primary">{{ button_submit }}</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-5">
+          <div class="va-custom-info">
+            <h3>{{ text_next_title }}</h3>
+            <div class="va-step">
+              <div class="va-step-num">1</div>
+              <div class="va-step-body"><strong>{{ text_step_1 }}</strong><span>We read every request personally.</span></div>
+            </div>
+            <div class="va-step">
+              <div class="va-step-num">2</div>
+              <div class="va-step-body"><strong>{{ text_step_2 }}</strong><span>Sketch, materials and pricing, tailored to you.</span></div>
+            </div>
+            <div class="va-step">
+              <div class="va-step-num">3</div>
+              <div class="va-step-body"><strong>{{ text_step_3 }}</strong><span>Handmade with care and shipped to your door.</span></div>
+            </div>
+            <hr class="my-4"/>
+            <p class="mb-1">{{ text_contact }}</p>
+            <p class="mb-0">{{ text_contact_email }}</p>
+          </div>
+        </div>
+      </div>
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+{{ footer }}
