@@ -135,10 +135,16 @@ label {
 
 #logo {
   margin: 12px 0;
+  height: 46px;
+  display: flex;
+  align-items: center;
 }
 
 #logo img {
+  max-height: 46px;
   max-width: 200px;
+  width: auto;
+  height: auto;
 }
 
 #logo h1 {
@@ -146,6 +152,7 @@ label {
   font-size: 1.9rem;
   font-weight: 600;
   letter-spacing: .04em;
+  line-height: 46px;
 }
 
 #logo h1 a {
