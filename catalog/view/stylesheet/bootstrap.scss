@@ -21,16 +21,33 @@ $gray-800:   #343a40;
 $gray-900:   #212529;
 $black:      #000;
 
-$enable-caret:                       false;
-$line-height-base:                   1.8;
-$input-btn-padding-y:                .35rem;
-$border-radius:                      .25rem;
-$border-radius-sm:                   .2rem;
-$border-radius-lg:                   .3rem;
-$border-radius-xl:                   .3rem;
-$border-radius-2xl:                  .3rem;
-$font-size-base:                     .8125rem;
-// $line-height-base:                   1.4;
+// Vidon Art palette
+$primary:                    #222222;
+$secondary:                  #8A9B8E;
+$success:                    #8A9B8E;
+$warning:                    #C9A227;
+$danger:                     #B3412C;
+$body-bg:                    #FAFAF8;
+$body-color:                 #222222;
+$link-color:                 #6F8274;
+$link-hover-color:           #222222;
+
+// Typography
+$font-family-sans-serif:     'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$headings-font-family:       'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+$headings-font-weight:       600;
+$headings-line-height:       1.15;
+
+// Rhythm
+$enable-caret:               false;
+$line-height-base:           1.7;
+$input-btn-padding-y:        .45rem;
+$font-size-base:             .9375rem;
+$border-radius:              .125rem;
+$border-radius-sm:           .0625rem;
+$border-radius-lg:           .25rem;
+$border-radius-xl:           .25rem;
+$border-radius-2xl:          .25rem;
 $carousel-control-color:             rgba(0, 0, 0, 0.8);
 $carousel-control-width:             30px;
 $carousel-indicator-width:           9px;
