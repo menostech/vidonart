@@ -11,6 +11,7 @@
   --va-tea: #8A9B8E;
   --va-tea-dark: #6F8274;
   --va-gold: #C9A227;
+  --va-gold-dark: #8A6D1F;
   --va-border: #E4E4DF;
   --va-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --va-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -379,10 +380,10 @@ label {
 .va-btn-gold {
   --bs-btn-bg: #C9A227;
   --bs-btn-border-color: #C9A227;
-  --bs-btn-color: #FAFAF8;
+  --bs-btn-color: #222222;
   --bs-btn-hover-bg: #b28e1e;
   --bs-btn-hover-border-color: #b28e1e;
-  --bs-btn-hover-color: #FFFFFF;
+  --bs-btn-hover-color: #222222;
   --bs-btn-active-bg: #9c7c18;
 }
 
@@ -464,7 +465,7 @@ div.required .form-label:before {
   left: 10px;
   z-index: 2;
   background: var(--va-gold);
-  color: #FAFAF8;
+  color: var(--va-ink);
   font-size: .6875rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -503,7 +504,7 @@ div.required .form-label:before {
   font-weight: 600;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--va-gold);
+  color: var(--va-gold-dark);
   text-decoration: none;
 }
 
@@ -572,7 +573,7 @@ div.required .form-label:before {
 }
 
 .price-old {
-  color: var(--va-gold);
+  color: var(--va-gold-dark);
   text-decoration: line-through;
   font-size: .8125rem;
 }
@@ -890,7 +891,7 @@ footer hr {
 }
 
 .va-view-all:hover {
-  color: var(--va-gold);
+  color: var(--va-gold-dark);
 }
 
 .va-tile {
@@ -1051,9 +1052,9 @@ footer hr {
   flex: 0 0 30px;
   width: 30px;
   height: 30px;
-  border: 1px solid var(--va-gold);
+  border: 1px solid var(--va-gold-dark);
   border-radius: 50%;
-  color: var(--va-gold);
+  color: var(--va-gold-dark);
   font-family: var(--va-serif);
   font-weight: 600;
   display: flex;
