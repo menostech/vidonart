@@ -1,7 +1,60 @@
 {{ header }}
-<div id="common-home" class="container">
-  <div class="row">{{ column_left }}
-    <div id="content" class="col">{{ content_top }}{{ content_bottom }}</div>
-    {{ column_right }}</div>
+<div id="common-home">
+  <section class="va-hero">
+    <div class="container">
+      <p class="va-hero-kicker">{{ text_hero_kicker }}</p>
+      <h1 class="va-hero-title">{{ text_hero_title }}</h1>
+      <p class="va-hero-sub">{{ text_hero_sub }}</p>
+      <div class="va-hero-actions">
+        <a href="{{ shop }}" class="btn btn-primary btn-lg">{{ text_shop_collection }}</a>
+        <a href="{{ custom }}" class="btn btn-outline-dark btn-lg">{{ text_start_custom }}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="va-collections">
+    <div class="container">
+      <div class="va-section-title">
+        <h2>{{ text_collections }}</h2>
+      </div>
+      <div class="row g-4">
+        {% for collection in collections %}
+          <div class="col-md-4">
+            <a href="{{ collection.href }}" class="va-tile">
+              <div class="va-tile-image"><img src="{{ collection.image }}" alt="{{ collection.name }}" class="img-fluid"/></div>
+              <div class="va-tile-body">
+                <h3>{{ collection.name }}</h3>
+                <span class="va-tile-link">{{ text_explore }} →</span>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  {% if featured %}
+    <section class="va-featured">
+      <div class="container">
+        <div class="va-section-title">
+          <h2>{{ text_featured }}</h2>
+          <a href="{{ featured_all }}" class="va-view-all">{{ text_view_all }} →</a>
+        </div>
+        <div class="row row-cols-2 row-cols-md-4 g-3">
+          {% for product in featured %}
+            <div class="col">{{ product }}</div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  <section class="va-cta-band">
+    <div class="container">
+      <h2>{{ text_cta_title }}</h2>
+      <p>{{ text_cta_sub }}</p>
+      <a href="{{ custom }}" class="btn va-btn-gold btn-lg">{{ text_start_custom }}</a>
+    </div>
+  </section>
 </div>
 {{ footer }}
