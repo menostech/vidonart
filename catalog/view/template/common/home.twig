@@ -12,26 +12,28 @@
     </div>
   </section>
 
-  <section class="va-collections">
-    <div class="container">
-      <div class="va-section-title">
-        <h2>{{ text_collections }}</h2>
+  {% if collections %}
+    <section class="va-collections">
+      <div class="container">
+        <div class="va-section-title">
+          <h2>{{ text_collections }}</h2>
+        </div>
+        <div class="row g-4">
+          {% for collection in collections %}
+            <div class="col-md-4">
+              <a href="{{ collection.href }}" class="va-tile">
+                <div class="va-tile-image"><img src="{{ collection.image }}" alt="{{ collection.name }}" class="img-fluid"/></div>
+                <div class="va-tile-body">
+                  <h3>{{ collection.name }}</h3>
+                  <span class="va-tile-link">{{ text_explore }} →</span>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
       </div>
-      <div class="row g-4">
-        {% for collection in collections %}
-          <div class="col-md-4">
-            <a href="{{ collection.href }}" class="va-tile">
-              <div class="va-tile-image"><img src="{{ collection.image }}" alt="{{ collection.name }}" class="img-fluid"/></div>
-              <div class="va-tile-body">
-                <h3>{{ collection.name }}</h3>
-                <span class="va-tile-link">{{ text_explore }} →</span>
-              </div>
-            </a>
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
+    </section>
+  {% endif %}
 
   {% if featured %}
     <section class="va-featured">
