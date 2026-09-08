@@ -32,3 +32,11 @@ $_['entry_rating']               = 'Rating';
 $_['tab_description']            = 'Description';
 $_['tab_attribute']              = 'Specification';
 $_['tab_review']                 = 'Reviews (%s)';
+
+// Custom order
+$_['text_custom_title']          = 'Want It Custom-Made?';
+$_['text_custom_copy']           = 'Share your vision — materials, size, details — and our artisans will craft a piece just for you.';
+$_['button_customize']           = 'Customize This Piece →';
+$_['text_trust_shipping']        = 'Free Shipping';
+$_['text_trust_handcrafted']     = 'Handcrafted';
+$_['text_trust_returns']         = 'Easy Returns';

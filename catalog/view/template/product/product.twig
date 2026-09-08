@@ -11,7 +11,7 @@
       <div class="row mb-3">
         {% if thumb or images %}
           <div class="col-sm">
-            <div class="image magnific-popup">
+            <div class="image magnific-popup va-gallery">
               {% if thumb %}
                 <a href="{{ popup }}" title="{{ heading_title }}"><img src="{{ thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" class="img-thumbnail mb-3"/></a>
               {% endif %}
@@ -77,6 +77,11 @@
               {% endif %}
             </ul>
           {% endif %}
+          <div class="va-custom-block">
+            <p class="va-custom-title">{{ text_custom_title }}</p>
+            <p class="va-custom-copy">{{ text_custom_copy }}</p>
+            <a href="index.php?route=information/custom&product_id={{ product_id }}" class="btn btn-outline-dark">{{ button_customize }}</a>
+          </div>
           <form method="post" data-oc-toggle="ajax">
             <div class="btn-group">
               <button type="submit" formaction="{{ wishlist_add }}" data-bs-toggle="tooltip" class="btn btn-light btn-lg" title="{{ button_wishlist }}"><i class="fa-solid fa-heart"></i></button>
@@ -233,6 +238,11 @@
               {% endif %}
             </form>
           </div>
+          <ul class="va-trust list-unstyled">
+            <li><i class="fa-solid fa-truck"></i> {{ text_trust_shipping }}</li>
+            <li><i class="fa-solid fa-hammer"></i> {{ text_trust_handcrafted }}</li>
+            <li><i class="fa-solid fa-rotate-left"></i> {{ text_trust_returns }}</li>
+          </ul>
         </div>
       </div>
       <ul class="nav nav-tabs">
