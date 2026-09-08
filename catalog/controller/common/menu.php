@@ -51,6 +51,8 @@ class Menu extends \Opencart\System\Engine\Controller {
 			] + $category;
 		}
 
+		$data['custom'] = $this->url->link('information/custom', 'language=' . $this->config->get('config_language'));
+
 		return $this->load->view('common/menu', $data);
 	}
 }

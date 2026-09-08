@@ -16,3 +16,9 @@ $_['text_order']        = 'Order History';
 $_['text_wishlist']     = 'Wish List';
 $_['text_newsletter']   = 'Newsletter';
 $_['text_powered']      = 'Powered By <a href="https://www.opencart.com">OpenCart</a><br/> %s &copy; %s';
+
+// Vidon Art
+$_['text_about']               = 'Handcrafted jewelry, bags and living objects in the spirit of Chinese heritage — made for the modern home.';
+$_['text_newsletter']          = 'Newsletter';
+$_['text_newsletter_placeholder'] = 'Your email address';
+$_['button_subscribe']         = 'Subscribe';
