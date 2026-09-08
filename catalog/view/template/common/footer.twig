@@ -7,7 +7,7 @@
           <p class="va-footer-logo">Vidon Art</p>
           <p class="va-footer-tagline">Oriental Heritage · Modern Craft</p>
           <p class="va-footer-about">{{ text_about }}</p>
-          <form id="form-newsletter" method="post" data-oc-toggle="ajax" class="va-newsletter mt-3">
+          <form id="form-newsletter" method="post" action="index.php?route=common/newsletter.save" data-oc-toggle="ajax" class="va-newsletter mt-3">
             <label for="input-newsletter" class="form-label">{{ text_newsletter }}</label>
             <div class="input-group">
               <input type="text" name="email" value="" placeholder="{{ text_newsletter_placeholder }}" id="input-newsletter" class="form-control"/>
