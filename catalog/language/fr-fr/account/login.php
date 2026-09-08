@@ -21,3 +21,7 @@ $_['error_token']                  = 'Attention: Session de jeton invalide. Veui
 $_['error_login']                  = 'Attention: Aucune correspondance pour l\'adresse e-mail et/ou le mot de passe.';
 $_['error_attempts']               = 'Attention: Votre compte a dépassé le nombre autorisé de tentatives de connexion. Veuillez réessayer dans 1 heure.';
 $_['error_approved']               = 'Attention: Votre compte nécessite une approbation avant de pouvoir vous connecter.';
+
+// Simplified login
+$_['placeholder_email']     = 'E-mail';
+$_['text_create_account']   = 'Créer un compte';
