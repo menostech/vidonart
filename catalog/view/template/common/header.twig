@@ -50,26 +50,13 @@
         </div>
         <div class="col-6 text-end">
           <ul class="list-inline">
-            <li class="list-inline-item d-none d-lg-inline"><a href="{{ contact }}">{{ telephone }}</a></li>
-            <li class="list-inline-item">
-              <div class="dropdown">
-                <span role="button" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user"></i></span>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  {% if not logged %}
-                    <li><a href="{{ register }}" class="dropdown-item">{{ text_register }}</a></li>
-                    <li><a href="{{ login }}" class="dropdown-item">{{ text_login }}</a></li>
-                  {% else %}
-                    <li><a href="{{ account }}" class="dropdown-item">{{ text_account }}</a></li>
-                    <li><a href="{{ order }}" class="dropdown-item">{{ text_order }}</a></li>
-                    <li><a href="{{ transaction }}" class="dropdown-item">{{ text_transaction }}</a></li>
-                    <li><a href="{{ download }}" class="dropdown-item">{{ text_download }}</a></li>
-                    <li><a href="{{ logout }}" class="dropdown-item">{{ text_logout }}</a></li>
-                  {% endif %}
-                </ul>
-              </div>
-            </li>
-            <li class="list-inline-item"><a href="{{ wishlist }}" id="wishlist-total" title="{{ text_wishlist }}"><i class="fa-solid fa-heart"></i></a></li>
-            <li class="list-inline-item"><a href="{{ shopping_cart }}" title="{{ text_shopping_cart }}"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            {% if not logged %}
+              <li class="list-inline-item"><a href="{{ register }}">{{ text_register }}</a></li>
+              <li class="list-inline-item"><a href="{{ login }}">{{ text_login }}</a></li>
+            {% else %}
+              <li class="list-inline-item"><a href="{{ account }}">{{ text_account }}</a></li>
+              <li class="list-inline-item"><a href="{{ logout }}">{{ text_logout }}</a></li>
+            {% endif %}
           </ul>
         </div>
       </div>
