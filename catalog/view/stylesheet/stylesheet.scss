@@ -118,6 +118,10 @@ label {
   color: var(--va-ink);
 }
 
+#top .dropdown-menu {
+  z-index: 1040;
+}
+
 /* ---------- header ---------- */
 #header {
   position: sticky;
