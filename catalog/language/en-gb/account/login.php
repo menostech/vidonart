@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']                = 'Account Login';
+$_['heading_title']                = 'Log in to your account';
 
 // Text
 $_['text_account']                 = 'Account';
@@ -21,3 +21,8 @@ $_['error_token']                  = 'Warning: Invalid token session. Please log
 $_['error_login']                  = 'Warning: No match for E-Mail Address and/or Password.';
 $_['error_attempts']               = 'Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour.';
 $_['error_approved']               = 'Warning: Your account requires approval before you can login.';
+
+// Simplified login
+$_['placeholder_email']     = 'Email';
+$_['text_create_account']   = 'Create an Account';
+$_['button_login']          = 'Sign in';
