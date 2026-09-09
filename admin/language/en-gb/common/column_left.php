@@ -83,3 +83,4 @@ $_['text_zone']                = 'Zones';
 $_['text_complete_status']     = 'Orders Completed';
 $_['text_processing_status']   = 'Orders Processing';
 $_['text_other_status']        = 'Other Statuses';
+$_['text_slideshow']           = 'Slideshows';

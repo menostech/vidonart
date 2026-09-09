@@ -1,0 +1,197 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="float-end">
+        <button type="submit" form="form-slideshow" data-bs-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa-solid fa-save"></i></button>
+        <a href="{{ back }}" data-bs-toggle="tooltip" title="{{ button_back }}" class="btn btn-light"><i class="fa-solid fa-reply"></i></a></div>
+      <h1>{{ text_form }}</h1>
+      <ol class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+          <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header"><i class="fa-solid fa-pencil"></i> {{ text_form }}</div>
+      <div class="card-body">
+        <form id="form-slideshow" action="{{ save }}" method="post" data-oc-toggle="ajax">
+          <div class="row mb-3 required">
+            <label for="input-name" class="col-sm-2 col-form-label">{{ entry_name }}</label>
+            <div class="col-sm-10">
+              <input type="text" name="name" value="{{ name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control"/>
+              <div id="error-name" class="invalid-feedback"></div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="input-width-mode" class="col-sm-2 col-form-label">{{ entry_width_mode }}</label>
+            <div class="col-sm-10">
+              <select name="width_mode" id="input-width-mode" class="form-select">
+                <option value="full"{% if width_mode == 'full' %} selected{% endif %}>{{ text_full }}</option>
+                <option value="box"{% if width_mode == 'box' %} selected{% endif %}>{{ text_box }}</option>
+              </select>
+              <div id="error-width-mode" class="invalid-feedback"></div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="input-height" class="col-sm-2 col-form-label">{{ entry_height }}</label>
+            <div class="col-sm-10">
+              <input type="text" name="height" value="{{ height }}" placeholder="{{ entry_height }}" id="input-height" class="form-control"/>
+              <div id="error-height" class="invalid-feedback"></div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">{{ entry_autoplay }}</label>
+            <div class="col-sm-10">
+              <div class="form-check form-switch form-switch-lg">
+                <input type="hidden" name="autoplay" value="0"/>
+                <input type="checkbox" name="autoplay" value="1" id="input-autoplay" class="form-check-input"{% if autoplay %} checked{% endif %}/>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">{{ entry_arrows }}</label>
+            <div class="col-sm-10">
+              <div class="form-check form-switch form-switch-lg">
+                <input type="hidden" name="arrows" value="0"/>
+                <input type="checkbox" name="arrows" value="1" id="input-arrows" class="form-check-input"{% if arrows %} checked{% endif %}/>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">{{ entry_dots }}</label>
+            <div class="col-sm-10">
+              <div class="form-check form-switch form-switch-lg">
+                <input type="hidden" name="dots" value="0"/>
+                <input type="checkbox" name="dots" value="1" id="input-dots" class="form-check-input"{% if dots %} checked{% endif %}/>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">{{ entry_status }}</label>
+            <div class="col-sm-10">
+              <div class="form-check form-switch form-switch-lg">
+                <input type="hidden" name="status" value="0"/>
+                <input type="checkbox" name="status" value="1" id="input-status" class="form-check-input"{% if status %} checked{% endif %}/>
+              </div>
+            </div>
+          </div>
+          <br/>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">{{ entry_slide }}</label>
+            <div class="col-sm-10">
+              <table id="slide" class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th class="text-center">{{ entry_image }}</th>
+                    <th>{{ entry_kicker }}</th>
+                    <th>{{ entry_title }}</th>
+                    <th>{{ entry_sub }}</th>
+                    <th>{{ entry_button_text }}</th>
+                    <th>{{ entry_button_link }}</th>
+                    <th>{{ entry_overlay_color }}</th>
+                    <th>{{ entry_overlay_opacity }}</th>
+                    <th>{{ entry_align }}</th>
+                    <th class="text-end">{{ entry_sort_order }}</th>
+                    <th class="text-center">{{ entry_status }}</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% set slide_row = 0 %}
+                  {% for slide in slides %}
+                    <tr id="slide-row-{{ slide_row }}">
+                      <td class="text-center" style="width: 150px;">
+                        <div class="border rounded d-block">
+                          <img src="{{ slide.thumb }}" alt="" title="" id="thumb-slide-{{ slide_row }}" data-oc-placeholder="{{ placeholder }}" class="img-fluid"/>
+                          <input type="hidden" name="slide[{{ slide_row }}][image]" value="{{ slide.image }}" id="input-slide-{{ slide_row }}-image"/>
+                          <div class="d-grid">
+                            <button type="button" data-oc-toggle="image" data-oc-target="#input-slide-{{ slide_row }}-image" data-oc-thumb="#thumb-slide-{{ slide_row }}" class="btn btn-primary rounded-0"><i class="fa-solid fa-pencil"></i> {{ button_edit }}</button>
+                            <button type="button" data-oc-toggle="clear" data-oc-target="#input-slide-{{ slide_row }}-image" data-oc-thumb="#thumb-slide-{{ slide_row }}" class="btn btn-warning rounded-0"><i class="fa-regular fa-trash-can"></i> {{ button_clear }}</button>
+                          </div>
+                        </div>
+                      </td>
+                      <td><input type="text" name="slide[{{ slide_row }}][kicker]" value="{{ slide.kicker }}" id="input-slide-{{ slide_row }}-kicker" class="form-control"/></td>
+                      <td><input type="text" name="slide[{{ slide_row }}][title]" value="{{ slide.title }}" id="input-slide-{{ slide_row }}-title" class="form-control"/></td>
+                      <td><input type="text" name="slide[{{ slide_row }}][sub]" value="{{ slide.sub }}" id="input-slide-{{ slide_row }}-sub" class="form-control"/></td>
+                      <td><input type="text" name="slide[{{ slide_row }}][button_text]" value="{{ slide.button_text }}" id="input-slide-{{ slide_row }}-button-text" class="form-control"/></td>
+                      <td><input type="text" name="slide[{{ slide_row }}][button_link]" value="{{ slide.button_link }}" id="input-slide-{{ slide_row }}-button-link" class="form-control"/></td>
+                      <td style="width: 80px;"><input type="color" name="slide[{{ slide_row }}][overlay_color]" value="{{ slide.overlay_color }}" id="input-slide-{{ slide_row }}-overlay-color" class="form-control form-control-color"/>
+                        <div id="error-slide-{{ slide_row }}-overlay-color" class="invalid-feedback"></div></td>
+                      <td style="width: 90px;"><input type="text" name="slide[{{ slide_row }}][overlay_opacity]" value="{{ slide.overlay_opacity }}" id="input-slide-{{ slide_row }}-overlay-opacity" class="form-control"/>
+                        <div id="error-slide-{{ slide_row }}-overlay-opacity" class="invalid-feedback"></div></td>
+                      <td style="width: 100px;"><select name="slide[{{ slide_row }}][align]" id="input-slide-{{ slide_row }}-align" class="form-select">
+                          <option value="left"{% if slide.align == 'left' %} selected{% endif %}>{{ text_left }}</option>
+                          <option value="center"{% if slide.align == 'center' %} selected{% endif %}>{{ text_center }}</option>
+                          <option value="right"{% if slide.align == 'right' %} selected{% endif %}>{{ text_right }}</option>
+                        </select>
+                        <div id="error-slide-{{ slide_row }}-align" class="invalid-feedback"></div></td>
+                      <td class="text-end" style="width: 80px;"><input type="text" name="slide[{{ slide_row }}][sort_order]" value="{{ slide.sort_order }}" id="input-slide-{{ slide_row }}-sort-order" class="form-control"/></td>
+                      <td class="text-center" style="width: 60px;"><div class="form-check form-switch">
+                        <input type="hidden" name="slide[{{ slide_row }}][status]" value="0"/>
+                        <input type="checkbox" name="slide[{{ slide_row }}][status]" value="1" id="input-slide-{{ slide_row }}-status" class="form-check-input"{% if slide.status %} checked{% endif %}/></div></td>
+                      <td class="text-end" style="width: 40px;"><button type="button" onclick="$('#slide-row-{{ slide_row }}').remove();" data-bs-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fa-solid fa-minus-circle"></i></button></td>
+                    </tr>
+                    {% set slide_row = slide_row + 1 %}
+                  {% endfor %}
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="11"></td>
+                    <td class="text-end"><button type="button" id="button-slide" data-bs-toggle="tooltip" title="{{ button_slide_add }}" class="btn btn-primary"><i class="fa-solid fa-plus-circle"></i></button></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <input type="hidden" name="slideshow_id" value="{{ slideshow_id }}" id="input-slideshow-id"/>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript"><!--
+var slide_row = {{ slide_row }};
+
+$('#button-slide').on('click', function() {
+    html = '<tr id="slide-row-' + slide_row + '">';
+    html += '  <td class="text-center" style="width: 150px;">';
+    html += '    <div class="border rounded d-block">';
+    html += '      <img src="{{ placeholder|escape('js') }}" alt="" title="" id="thumb-slide-' + slide_row + '" data-oc-placeholder="{{ placeholder|escape('js') }}" class="img-fluid"/>';
+    html += '      <input type="hidden" name="slide[' + slide_row + '][image]" value="" id="input-slide-' + slide_row + '-image"/>';
+    html += '      <div class="d-grid">';
+    html += '        <button type="button" data-oc-toggle="image" data-oc-target="#input-slide-' + slide_row + '-image" data-oc-thumb="#thumb-slide-' + slide_row + '" class="btn btn-primary rounded-0"><i class="fa-solid fa-pencil"></i> {{ button_edit|escape('js') }}</button>';
+    html += '        <button type="button" data-oc-toggle="clear" data-oc-target="#input-slide-' + slide_row + '-image" data-oc-thumb="#thumb-slide-' + slide_row + '" class="btn btn-warning rounded-0"><i class="fa-regular fa-trash-can"></i> {{ button_clear|escape('js') }}</button>';
+    html += '      </div>';
+    html += '    </div>';
+    html += '  </td>';
+    html += '  <td><input type="text" name="slide[' + slide_row + '][kicker]" value="" id="input-slide-' + slide_row + '-kicker" class="form-control"/></td>';
+    html += '  <td><input type="text" name="slide[' + slide_row + '][title]" value="" id="input-slide-' + slide_row + '-title" class="form-control"/></td>';
+    html += '  <td><input type="text" name="slide[' + slide_row + '][sub]" value="" id="input-slide-' + slide_row + '-sub" class="form-control"/></td>';
+    html += '  <td><input type="text" name="slide[' + slide_row + '][button_text]" value="" id="input-slide-' + slide_row + '-button-text" class="form-control"/></td>';
+    html += '  <td><input type="text" name="slide[' + slide_row + '][button_link]" value="" id="input-slide-' + slide_row + '-button-link" class="form-control"/></td>';
+    html += '  <td style="width: 80px;"><input type="color" name="slide[' + slide_row + '][overlay_color]" value="#000000" id="input-slide-' + slide_row + '-overlay-color" class="form-control form-control-color"/>';
+    html += '    <div id="error-slide-' + slide_row + '-overlay-color" class="invalid-feedback"></div></td>';
+    html += '  <td style="width: 90px;"><input type="text" name="slide[' + slide_row + '][overlay_opacity]" value="30" id="input-slide-' + slide_row + '-overlay-opacity" class="form-control"/>';
+    html += '    <div id="error-slide-' + slide_row + '-overlay-opacity" class="invalid-feedback"></div></td>';
+    html += '  <td style="width: 100px;"><select name="slide[' + slide_row + '][align]" id="input-slide-' + slide_row + '-align" class="form-select">';
+    html += '    <option value="left">{{ text_left|escape('js') }}</option>';
+    html += '    <option value="center">{{ text_center|escape('js') }}</option>';
+    html += '    <option value="right">{{ text_right|escape('js') }}</option>';
+    html += '  </select>';
+    html += '    <div id="error-slide-' + slide_row + '-align" class="invalid-feedback"></div></td>';
+    html += '  <td class="text-end" style="width: 80px;"><input type="text" name="slide[' + slide_row + '][sort_order]" value="0" id="input-slide-' + slide_row + '-sort-order" class="form-control"/></td>';
+    html += '  <td class="text-center" style="width: 60px;"><div class="form-check form-switch">';
+    html += '    <input type="hidden" name="slide[' + slide_row + '][status]" value="0"/>';
+    html += '    <input type="checkbox" name="slide[' + slide_row + '][status]" value="1" id="input-slide-' + slide_row + '-status" class="form-check-input" checked/></div></td>';
+    html += '  <td class="text-end" style="width: 40px;"><button type="button" onclick="$(\'#slide-row-' + slide_row + '\').remove();" data-bs-toggle="tooltip" title="{{ button_remove|escape('js') }}" class="btn btn-danger"><i class="fa-solid fa-minus-circle"></i></button></td>';
+    html += '</tr>';
+
+    $('#slide tbody').append(html);
+
+    slide_row++;
+});
+//--></script>
+{{ footer }}
