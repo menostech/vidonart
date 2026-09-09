@@ -1,6 +1,11 @@
 ﻿// ============================================================
-// Vidon Art 鈥?Modern Oriental theme
+// Vidon Art — Modern Oriental theme
 // ============================================================
+
+// ---------- Root font base (do not rely on browser default) ----------
+html {
+  font-size: 16px !important;
+}
 
 // ---------- Design tokens ----------
 :root {
