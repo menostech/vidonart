@@ -1117,3 +1117,134 @@ footer hr {
   border-color: var(--va-border);
   background-color: var(--va-surface);
 }
+
+/* ---------- slideshow module ---------- */
+.va-slideshow {
+  margin-bottom: 48px;
+}
+
+.va-slideshow .carousel {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+
+.va-slideshow .carousel-inner,
+.va-slideshow .carousel-item {
+  height: 100%;
+}
+
+.va-slide {
+  position: relative;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.va-slide-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.va-slide-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  max-width: 720px;
+  padding: 0 8%;
+  color: #FFFFFF;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+}
+
+.va-slideshow .va-slide-content.text-center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.va-slideshow .va-slide-content.text-end {
+  margin-left: auto;
+  text-align: right;
+}
+
+.va-slide-kicker {
+  font-size: 1.25rem;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--va-gold);
+  margin-bottom: 10px;
+}
+
+.va-slide-title {
+  font-size: 2rem;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+}
+
+.va-slide-sub {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  color: rgba(255, 255, 255, .92);
+}
+
+.va-slide-content .btn {
+  align-self: flex-start;
+}
+
+.va-slideshow .va-slide-content.text-center .btn {
+  align-self: center;
+}
+
+.va-slideshow .va-slide-content.text-end .btn {
+  align-self: flex-end;
+}
+
+.va-slideshow .carousel-indicators {
+  z-index: 3;
+}
+
+.va-slideshow .carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid #FFFFFF;
+  background-color: transparent;
+  opacity: .6;
+}
+
+.va-slideshow .carousel-indicators .active {
+  background-color: var(--va-gold);
+  border-color: var(--va-gold);
+  opacity: 1;
+}
+
+.va-slideshow .carousel-control-prev,
+.va-slideshow .carousel-control-next {
+  z-index: 3;
+  width: 48px;
+  height: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity .25s ease;
+  color: #FFFFFF;
+  font-size: 1.2rem;
+}
+
+.va-slideshow:hover .carousel-control-prev,
+.va-slideshow:hover .carousel-control-next {
+  opacity: .85;
+}
+
+.va-slideshow .carousel-control-prev {
+  left: 16px;
+}
+
+.va-slideshow .carousel-control-next {
+  right: 16px;
+}
