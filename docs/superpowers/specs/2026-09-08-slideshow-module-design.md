@@ -59,9 +59,9 @@ A configurable slideshow module: admin-managed slideshows (add/delete), each wit
 - `extension/opencart/catalog/controller/module/slideshow.php` — loads slideshow + enabled slides (ordered by sort_order), builds per-slide data; converts `overlay_color` hex + `overlay_opacity` into a ready `rgba(r, g, b, a)` string in the controller (Twig does no hex parsing); passes `width_mode`, `height`, `autoplay`, `arrows`, `dots`.
 - `extension/opencart/catalog/view/template/module/slideshow.twig`:
   - wrapper: `full` → full-width block (no container); `box` → `.container`;
-  - inline `style="height: {height}px"` on the swiper;
+  - inline `style="height: {height}px"` on the carousel;
   - each slide: `<div class="va-slide" style="background-image:url(...)">` with cover sizing, overlay div `background: rgba(...)`, content block (kicker / title / sub / button) with alignment class (`text-start` / `text-center` / `text-end`);
-  - Swiper (bundled with OC4 at `catalog/view/javascript/swiper/`) with fade effect; autoplay / navigation / pagination enabled per settings; pagination dots styled gold, arrows styled ink.
+  - carousel: **Bootstrap 5.3 Carousel** (already bundled — same approach as the stock banner module; no Swiper dependency), `carousel-fade` for fade transitions; autoplay via `data-bs-ride="carousel"` + JS interval, arrows = carousel-control buttons, dots = carousel-indicators, each rendered only when the corresponding setting is on; pagination dots styled gold, arrows styled ink.
 - No catalog language file needed (all slide text comes from DB).
 
 ## 5. Homepage Integration
