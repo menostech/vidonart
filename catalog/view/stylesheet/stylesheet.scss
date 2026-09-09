@@ -407,9 +407,14 @@ label {
 /* ---------- forms ---------- */
 .form-control,
 .form-select {
+  font-size: 0.8125rem;
   border-color: var(--va-border);
   border-radius: .125rem;
   background-color: var(--va-surface);
+}
+
+.col-form-label {
+  font-size: 0.8125rem;
 }
 
 .form-control:focus,
