@@ -26,10 +26,12 @@
 | `admin/view/template/design/slideshow.twig` | list view | Create (Task 3) |
 | `admin/view/template/design/slideshow_form.twig` | slideshow + slide repeater | Create (Task 3) |
 | `admin/controller/common/column_left.php` + `admin/language/en-gb/common/column_left.php` | Design menu entry | Modify (Task 3) |
+| `catalog/model/design/slideshow.php` | catalog read model (getSlideshow/getSlides) | Create (Task 4) |
 | `extension/opencart/catalog/controller/module/slideshow.php` | catalog render | Create (Task 4) |
 | `extension/opencart/catalog/view/template/module/slideshow.twig` | carousel markup | Create (Task 4) |
 | `catalog/view/stylesheet/stylesheet.scss` + `.css` | slide/overlay/content/carousel styles | Modify (Task 4) |
-| `catalog/view/template/common/home.twig` | remove `.va-hero` section | Modify (Task 5) |
+| `catalog/controller/common/home.php` | load `content_top` for home layout | Modify (Task 5) |
+| `catalog/view/template/common/home.twig` | remove `.va-hero` section + render `{{ content_top }}` | Modify (Task 5) |
 
 ---
 
@@ -1320,11 +1322,53 @@ git commit -m "feat: slideshow admin views and design menu entry"
 ## Task 4: Catalog Rendering + Styles
 
 **Files:**
+- Create: `catalog/model/design/slideshow.php`
 - Create: `extension/opencart/catalog/controller/module/slideshow.php`
 - Create: `extension/opencart/catalog/view/template/module/slideshow.twig`
 - Modify: `catalog/view/stylesheet/stylesheet.scss` + regenerate `.css`
 
-- [ ] **Step 1: Create the catalog controller** 鈥?`extension/opencart/catalog/controller/module/slideshow.php`
+- [ ] **Step 1: Create the catalog model**
+
+The catalog controller loads `design/slideshow`, which resolves to the catalog-side model (`catalog/model/design/slideshow.php`; OC4 catalog has its own design models, e.g. `catalog/model/design/banner.php`). Mirror the admin model's read methods:
+
+```php
+<?php
+namespace Opencart\Catalog\Model\Design;
+/**
+ * Class Slideshow
+ *
+ * @package Opencart\Catalog\Model\Design
+ */
+class Slideshow extends \Opencart\System\Engine\Model {
+	/**
+	 * Get Slideshow
+	 *
+	 * @param int $slideshow_id slideshow id
+	 *
+	 * @return array<string, mixed>
+	 */
+	public function getSlideshow(int $slideshow_id): array {
+		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "slideshow` WHERE `slideshow_id` = '" . (int)$slideshow_id . "'");
+
+		return $query->row;
+	}
+
+	/**
+	 * Get Slides
+	 *
+	 * @param int $slideshow_id slideshow id
+	 *
+	 * @return array<int, array<string, mixed>>
+	 */
+	public function getSlides(int $slideshow_id): array {
+		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "slideshow_slide` WHERE `slideshow_id` = '" . (int)$slideshow_id . "' ORDER BY `sort_order` ASC");
+
+		return $query->rows;
+	}
+}
+```
+
+- [ ] **Step 2: Create the catalog controller** 鈥?`extension/opencart/catalog/controller/module/slideshow.php`
 
 ```php
 <?php
@@ -1414,7 +1458,7 @@ class Slideshow extends \Opencart\System\Engine\Controller {
 }
 ```
 
-- [ ] **Step 2: Create the catalog view** 鈥?`extension/opencart/catalog/view/template/module/slideshow.twig`
+- [ ] **Step 3: Create the catalog view** 鈥?`extension/opencart/catalog/view/template/module/slideshow.twig`
 
 ```twig
 <div id="slideshow-{{ module }}" class="va-slideshow{% if width_mode == 'box' %} container{% endif %}">
@@ -1462,7 +1506,7 @@ $(document).ready(function() {
 //--></script>
 ```
 
-- [ ] **Step 3: Add slideshow styles** 鈥?append to `catalog/view/stylesheet/stylesheet.scss`
+- [ ] **Step 4: Add slideshow styles** 鈥?append to `catalog/view/stylesheet/stylesheet.scss`
 
 ```scss
 /* ---------- slideshow module ---------- */
@@ -1606,7 +1650,7 @@ $(document).ready(function() {
 }
 ```
 
-- [ ] **Step 4: Recompile the stylesheet**
+- [ ] **Step 5: Recompile the stylesheet**
 
 ```powershell
 npx --yes sass catalog/view/stylesheet/stylesheet.scss catalog/view/stylesheet/stylesheet.css --style=compressed
@@ -1614,11 +1658,11 @@ npx --yes sass catalog/view/stylesheet/stylesheet.scss catalog/view/stylesheet/s
 
 Expected: no errors. Delete `catalog/view/stylesheet/stylesheet.css.map` if produced.
 
-- [ ] **Step 5: Verify & commit**
+- [ ] **Step 6: Verify & commit**
 
 ```powershell
 git diff --check
-git add extension/opencart/catalog/controller/module/slideshow.php extension/opencart/catalog/view/template/module/slideshow.twig catalog/view/stylesheet/stylesheet.scss catalog/view/stylesheet/stylesheet.css
+git add catalog/model/design/slideshow.php extension/opencart/catalog/controller/module/slideshow.php extension/opencart/catalog/view/template/module/slideshow.twig catalog/view/stylesheet/stylesheet.scss catalog/view/stylesheet/stylesheet.css
 git commit -m "feat: slideshow catalog rendering with bootstrap carousel"
 ```
 
@@ -1627,6 +1671,7 @@ git commit -m "feat: slideshow catalog rendering with bootstrap carousel"
 ## Task 5: Homepage Integration
 
 **Files:**
+- Modify: `catalog/controller/common/home.php`
 - Modify: `catalog/view/template/common/home.twig`
 
 - [ ] **Step 1: Remove the hardcoded hero section**
@@ -1639,7 +1684,21 @@ The file should begin (after `{{ header }}` and `<div id="common-home">`) with:
   <section class="va-collections">
 ```
 
-- [ ] **Step 2: Verify**
+- [ ] **Step 2: Render content_top on the homepage**
+
+The slideshow module is placed at the home layout `content_top` via admin, but the homepage never renders it. In `catalog/controller/common/home.php`, load content_top next to the footer/header loads:
+
+```php
+$data['content_top'] = $this->load->controller('common/content_top');
+```
+
+In `catalog/view/template/common/home.twig`, right after `<div id="common-home">` and before the collections section:
+
+```twig
+  {{ content_top }}
+```
+
+- [ ] **Step 3: Verify**
 
 ```powershell
 git diff --check
@@ -1648,11 +1707,11 @@ Select-String -Path "catalog/view/template/common/home.twig" -Pattern "va-hero"
 
 Expected: no hits for `va-hero` in the template.
 
-- [ ] **Step 3: Commit**
+- [ ] **Step 4: Commit**
 
 ```powershell
-git add catalog/view/template/common/home.twig
-git commit -m "refactor: remove hardcoded homepage hero, slideshow takes over content_top"
+git add catalog/controller/common/home.php catalog/view/template/common/home.twig
+git commit -m "fix: render content_top on homepage"
 ```
 
 ---
