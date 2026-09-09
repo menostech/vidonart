@@ -36,14 +36,14 @@ class Slideshow extends \Opencart\System\Engine\Controller {
 		} else {
 			$data['breadcrumbs'][] = [
 				'text' => $this->language->get('heading_title'),
-				'href' => $this->url->link('extension/opencart/module/slideshow', 'user_token=' . $this->session->data['user_token'] . '&module_id=' . $this->request->get['module_id'])
+				'href' => $this->url->link('extension/opencart/module/slideshow', 'user_token=' . $this->session->data['user_token'] . '&module_id=' . (int)$this->request->get['module_id'])
 			];
 		}
 
 		if (!isset($this->request->get['module_id'])) {
 			$data['save'] = $this->url->link('extension/opencart/module/slideshow.save', 'user_token=' . $this->session->data['user_token']);
 		} else {
-			$data['save'] = $this->url->link('extension/opencart/module/slideshow.save', 'user_token=' . $this->session->data['user_token'] . '&module_id=' . $this->request->get['module_id']);
+			$data['save'] = $this->url->link('extension/opencart/module/slideshow.save', 'user_token=' . $this->session->data['user_token'] . '&module_id=' . (int)$this->request->get['module_id']);
 		}
 
 		$data['back'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module');
@@ -51,7 +51,7 @@ class Slideshow extends \Opencart\System\Engine\Controller {
 		if (isset($this->request->get['module_id'])) {
 			$this->load->model('setting/module');
 
-			$module_info = $this->model_setting_module->getModule($this->request->get['module_id']);
+			$module_info = $this->model_setting_module->getModule((int)$this->request->get['module_id']);
 		}
 
 		if (isset($module_info['name'])) {
@@ -116,7 +116,7 @@ class Slideshow extends \Opencart\System\Engine\Controller {
 			if (!isset($this->request->get['module_id'])) {
 				$json['module_id'] = $this->model_setting_module->addModule('opencart.slideshow', $post_info);
 			} else {
-				$this->model_setting_module->editModule($this->request->get['module_id'], $post_info);
+				$this->model_setting_module->editModule((int)$this->request->get['module_id'], $post_info);
 			}
 
 			$json['success'] = $this->language->get('text_success');
