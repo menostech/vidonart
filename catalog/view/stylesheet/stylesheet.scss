@@ -49,7 +49,7 @@ legend {
 }
 
 label {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: .08em;
@@ -102,7 +102,7 @@ label {
 #top {
   background-color: var(--va-paper);
   border-bottom: 1px solid var(--va-border);
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 #top ul.list-inline {
@@ -112,7 +112,7 @@ label {
 #top .list-inline-item > a,
 #top .list-inline-item .dropdown > a,
 #top .list-inline-item .dropdown > span {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--va-text);
   line-height: 36px;
   vertical-align: middle;
@@ -154,7 +154,7 @@ label {
 
 #logo h1 {
   margin: 0;
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: 600;
   letter-spacing: .04em;
   line-height: 46px;
@@ -172,7 +172,7 @@ label {
 
 #search .form-control-lg {
   height: 46px;
-  font-size: 1.25rem;
+  font-size: 1rem;
   line-height: 20px;
   padding: 0 12px;
   border-color: var(--va-border);
@@ -180,7 +180,7 @@ label {
 }
 
 #search .btn-lg {
-  font-size: 1.25rem;
+  font-size: 1rem;
   line-height: 18px;
   padding: .57rem 28px;
 }
@@ -191,7 +191,7 @@ label {
 }
 
 #cart .btn-lg {
-  font-size: 1.25rem;
+  font-size: 1rem;
   line-height: 18px;
   height: 46px;
   padding: 0 24px;
@@ -233,7 +233,7 @@ label {
 #menu .navbar-nav > li > a {
   color: var(--va-ink);
   font-family: var(--va-serif);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   padding: 12px 0;
   background-color: transparent;
@@ -272,7 +272,7 @@ label {
 }
 
 #menu .dropdown-item {
-  font-size: 1.25rem;
+  font-size: 1rem;
   padding: .4rem .75rem;
   color: var(--va-ink);
 }
@@ -288,7 +288,7 @@ label {
 
 #category {
   float: left;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-family: var(--va-serif);
   font-weight: 600;
   line-height: 44px;
@@ -342,7 +342,7 @@ label {
   background-color: transparent;
 
   > li.breadcrumb-item {
-    font-size: 1.25rem;
+    font-size: 1rem;
     padding: 0 14px 0 0;
     white-space: nowrap;
 
@@ -372,7 +372,7 @@ label {
   border-radius: .125rem;
   text-transform: uppercase;
   letter-spacing: .12em;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
   padding: .65rem 1.6rem;
 }
@@ -421,7 +421,7 @@ label {
 .form-label {
   text-transform: uppercase;
   letter-spacing: .08em;
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--va-text);
 }
 
@@ -429,12 +429,12 @@ label {
   background-color: var(--va-surface);
   border-color: var(--va-border);
   border-radius: .125rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--va-text);
 }
 
 .invalid-feedback {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 div.required .col-form-label:before,
@@ -483,7 +483,7 @@ div.required .form-label:before {
   z-index: 2;
   background: var(--va-gold);
   color: var(--va-ink);
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .12em;
@@ -496,7 +496,7 @@ div.required .form-label:before {
 }
 
 .product-thumb .description h4 {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 500;
   margin-bottom: 6px;
   display: -webkit-box;
@@ -517,7 +517,7 @@ div.required .form-label:before {
 .product-thumb .va-customize {
   display: inline-block;
   margin-top: 8px;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -582,7 +582,7 @@ div.required .form-label:before {
 /* ---------- price / rating ---------- */
 .price {
   color: var(--va-ink);
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .price-new {
@@ -592,12 +592,12 @@ div.required .form-label:before {
 .price-old {
   color: var(--va-gold-dark);
   text-decoration: line-through;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .price-tax {
   color: var(--va-text);
-  font-size: 1.25rem;
+  font-size: 1rem;
   display: block;
 }
 
@@ -607,7 +607,7 @@ div.required .form-label:before {
 
 .rating .fa-star {
   color: var(--va-gold);
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .rating .fa-star + .fa-star {
@@ -657,7 +657,7 @@ div.required .form-label:before {
   border-radius: 0;
   color: var(--va-text);
   font-family: var(--va-serif);
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
   padding: .6rem 1.1rem;
 }
@@ -715,7 +715,7 @@ footer {
 
 footer h5 {
   font-family: var(--va-serif);
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #FFFFFF;
   margin-top: 10px;
@@ -726,7 +726,7 @@ footer h5 {
 footer a {
   color: #B9B4AA;
   text-decoration: none;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 footer a:hover {
@@ -743,7 +743,7 @@ footer .list-unstyled li {
 
 .va-footer-logo {
   font-family: var(--va-serif);
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 600;
   color: #FFFFFF;
   margin-bottom: 4px;
@@ -751,7 +751,7 @@ footer .list-unstyled li {
 }
 
 .va-footer-tagline {
-  font-size: 1.25rem;
+  font-size: 1rem;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--va-gold);
@@ -759,7 +759,7 @@ footer .list-unstyled li {
 }
 
 .va-footer-about {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: #B9B4AA;
   line-height: 1.8;
 }
@@ -768,7 +768,7 @@ footer .list-unstyled li {
   color: #B9B4AA;
   text-transform: none;
   letter-spacing: .02em;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .va-newsletter .form-control {
@@ -812,7 +812,7 @@ footer hr {
 
 .va-footer-bottom p {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: #8B867C;
 }
 
@@ -830,7 +830,7 @@ footer hr {
 }
 
 #cookie div {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: #E8E4DC;
 }
 
@@ -842,7 +842,7 @@ footer hr {
 }
 
 .va-hero-kicker {
-  font-size: 1.25rem;
+  font-size: 1rem;
   letter-spacing: .3em;
   text-transform: uppercase;
   color: var(--va-tea-dark);
@@ -850,14 +850,14 @@ footer hr {
 }
 
 .va-hero-title {
-  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-size: 2rem;
   max-width: 640px;
   line-height: 1.05;
   margin-bottom: 18px;
 }
 
 .va-hero-sub {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--va-text);
   max-width: 460px;
   line-height: 1.8;
@@ -885,7 +885,7 @@ footer hr {
 }
 
 .va-section-title h2 {
-  font-size: 2.4rem;
+  font-size: 2rem;
   margin: 0;
 }
 
@@ -899,7 +899,7 @@ footer hr {
 }
 
 .va-view-all {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -945,13 +945,13 @@ footer hr {
 }
 
 .va-tile-body h3 {
-  font-size: 1.9rem;
+  font-size: 2rem;
   margin-bottom: 6px;
   color: var(--va-ink);
 }
 
 .va-tile-link {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -976,7 +976,7 @@ footer hr {
 
 .va-cta-band h2 {
   font-family: var(--va-serif);
-  font-size: 2.8rem;
+  font-size: 2rem;
   color: #FFFFFF;
   margin-bottom: 12px;
 }
@@ -996,7 +996,7 @@ footer hr {
 }
 
 #product-info h1 {
-  font-size: 2.6rem;
+  font-size: 2rem;
   margin-bottom: 16px;
 }
 
@@ -1009,14 +1009,14 @@ footer hr {
 
 .va-custom-title {
   font-family: var(--va-serif);
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 600;
   margin-bottom: 4px;
   color: var(--va-ink);
 }
 
 .va-custom-copy {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--va-text);
   margin-bottom: 12px;
 }
@@ -1031,7 +1031,7 @@ footer hr {
 }
 
 .va-trust li {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--va-text);
 }
 
@@ -1044,7 +1044,7 @@ footer hr {
 .va-custom-category label {
   text-transform: none;
   letter-spacing: normal;
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--va-ink);
 }
 
@@ -1055,7 +1055,7 @@ footer hr {
 }
 
 .va-custom-info h3 {
-  font-size: 1.9rem;
+  font-size: 2rem;
   margin-bottom: 18px;
 }
 
@@ -1081,12 +1081,12 @@ footer hr {
 
 .va-step-body strong {
   display: block;
-  font-size: 1.25rem;
+  font-size: 1rem;
   margin-bottom: 2px;
 }
 
 .va-step-body span {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--va-text);
 }
 
@@ -1099,7 +1099,7 @@ footer hr {
 
 .va-empty p {
   font-family: var(--va-serif);
-  font-size: 1.9rem;
+  font-size: 2rem;
   color: var(--va-ink);
 }
 
