@@ -1206,6 +1206,7 @@ footer hr {
 
 .va-slideshow .carousel-indicators {
   z-index: 3;
+  bottom: 0;
 }
 
 .va-slideshow .carousel-indicators [data-bs-target] {
@@ -1239,6 +1240,14 @@ footer hr {
 .va-slideshow:hover .carousel-control-prev,
 .va-slideshow:hover .carousel-control-next {
   opacity: .85;
+}
+
+.va-slideshow:hover .carousel-control-prev {
+  left: 16px;
+}
+
+.va-slideshow:hover .carousel-control-next {
+  right: 16px;
 }
 
 .va-slideshow .carousel-control-prev {

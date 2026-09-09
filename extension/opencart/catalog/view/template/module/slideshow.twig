@@ -15,7 +15,7 @@
         <div class="carousel-item{% if slide_count == 0 %} active{% endif %}">
           <div class="va-slide" style="background-image: url('{{ slide.image }}');">
             <div class="va-slide-overlay" style="background: {{ slide.overlay }};"></div>
-            <div class="va-slide-content text-{{ slide.align }}">
+            <div class="va-slide-content {{ slide.align }}">
               {% if slide.kicker %}<p class="va-slide-kicker">{{ slide.kicker }}</p>{% endif %}
               {% if slide.title %}<h2 class="va-slide-title">{{ slide.title }}</h2>{% endif %}
               {% if slide.sub %}<p class="va-slide-sub">{{ slide.sub }}</p>{% endif %}

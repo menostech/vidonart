@@ -19,7 +19,7 @@ class Slideshow extends \Opencart\System\Engine\Controller {
 		// Slideshow
 		$this->load->model('design/slideshow');
 
-		$slideshow_info = $this->model_design_slideshow->getSlideshow((int)$setting['slideshow_id']);
+		$slideshow_info = $this->model_design_slideshow->getSlideshow((int)($setting['slideshow_id'] ?? 0));
 
 		if (!$slideshow_info || !$slideshow_info['status']) {
 			return '';
@@ -27,7 +27,9 @@ class Slideshow extends \Opencart\System\Engine\Controller {
 
 		$data['slides'] = [];
 
-		$slides = $this->model_design_slideshow->getSlides((int)$setting['slideshow_id']);
+		$slides = $this->model_design_slideshow->getSlides((int)($setting['slideshow_id'] ?? 0));
+
+		$align_map = ['left' => 'text-start', 'center' => 'text-center', 'right' => 'text-end'];
 
 		foreach ($slides as $slide) {
 			if (!$slide['status']) {
@@ -58,7 +60,7 @@ class Slideshow extends \Opencart\System\Engine\Controller {
 			$data['slides'][] = [
 				'image'           => $image,
 				'overlay'         => sprintf('rgba(%d, %d, %d, %.2f)', $r, $g, $b, $alpha),
-				'align'           => $slide['align'],
+				'align'           => $align_map[$slide['align']] ?? 'text-start',
 				'kicker'          => $slide['kicker'],
 				'title'           => $slide['title'],
 				'sub'             => $slide['sub'],

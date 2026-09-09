@@ -1348,7 +1348,7 @@ class Slideshow extends \Opencart\System\Engine\Controller {
 		// Slideshow
 		$this->load->model('design/slideshow');
 
-		$slideshow_info = $this->model_design_slideshow->getSlideshow((int)$setting['slideshow_id']);
+		$slideshow_info = $this->model_design_slideshow->getSlideshow((int)($setting['slideshow_id'] ?? 0));
 
 		if (!$slideshow_info || !$slideshow_info['status']) {
 			return '';
@@ -1356,7 +1356,9 @@ class Slideshow extends \Opencart\System\Engine\Controller {
 
 		$data['slides'] = [];
 
-		$slides = $this->model_design_slideshow->getSlides((int)$setting['slideshow_id']);
+		$slides = $this->model_design_slideshow->getSlides((int)($setting['slideshow_id'] ?? 0));
+
+		$align_map = ['left' => 'text-start', 'center' => 'text-center', 'right' => 'text-end'];
 
 		foreach ($slides as $slide) {
 			if (!$slide['status']) {
@@ -1387,7 +1389,7 @@ class Slideshow extends \Opencart\System\Engine\Controller {
 			$data['slides'][] = [
 				'image'           => $image,
 				'overlay'         => sprintf('rgba(%d, %d, %d, %.2f)', $r, $g, $b, $alpha),
-				'align'           => $slide['align'],
+				'align'           => $align_map[$slide['align']] ?? 'text-start',
 				'kicker'          => $slide['kicker'],
 				'title'           => $slide['title'],
 				'sub'             => $slide['sub'],
@@ -1432,7 +1434,7 @@ class Slideshow extends \Opencart\System\Engine\Controller {
         <div class="carousel-item{% if slide_count == 0 %} active{% endif %}">
           <div class="va-slide" style="background-image: url('{{ slide.image }}');">
             <div class="va-slide-overlay" style="background: {{ slide.overlay }};"></div>
-            <div class="va-slide-content text-{{ slide.align }}">
+            <div class="va-slide-content {{ slide.align }}">
               {% if slide.kicker %}<p class="va-slide-kicker">{{ slide.kicker }}</p>{% endif %}
               {% if slide.title %}<h2 class="va-slide-title">{{ slide.title }}</h2>{% endif %}
               {% if slide.sub %}<p class="va-slide-sub">{{ slide.sub }}</p>{% endif %}
@@ -1551,6 +1553,7 @@ $(document).ready(function() {
 
 .va-slideshow .carousel-indicators {
   z-index: 3;
+  bottom: 0;
 }
 
 .va-slideshow .carousel-indicators [data-bs-target] {
@@ -1584,6 +1587,14 @@ $(document).ready(function() {
 .va-slideshow:hover .carousel-control-prev,
 .va-slideshow:hover .carousel-control-next {
   opacity: .85;
+}
+
+.va-slideshow:hover .carousel-control-prev {
+  left: 16px;
+}
+
+.va-slideshow:hover .carousel-control-next {
+  right: 16px;
 }
 
 .va-slideshow .carousel-control-prev {
