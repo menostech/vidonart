@@ -97,7 +97,7 @@ label {
 #top {
   background-color: var(--va-paper);
   border-bottom: 1px solid var(--va-border);
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 #top ul.list-inline {
@@ -107,7 +107,7 @@ label {
 #top .list-inline-item > a,
 #top .list-inline-item .dropdown > a,
 #top .list-inline-item .dropdown > span {
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: var(--va-text);
   line-height: 36px;
   vertical-align: middle;
@@ -228,7 +228,7 @@ label {
 #menu .navbar-nav > li > a {
   color: var(--va-ink);
   font-family: var(--va-serif);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 600;
   padding: 12px 0;
   background-color: transparent;
