@@ -1075,6 +1075,13 @@ git commit -m "feat: slideshow design CRUD (model, controller, language)"
     </div>
   </div>
 </div>
+<script type="text/javascript"><!--
+$('#slideshow').on('click', 'thead a, .pagination a', function(e) {
+    e.preventDefault();
+
+    $('#slideshow').load(this.href);
+});
+//--></script>
 {{ footer }}
 ```
 
