@@ -118,7 +118,13 @@ class Slideshow extends \Opencart\System\Engine\Controller {
 
 		$this->load->model('design/slideshow');
 
-		$results = $this->model_design_slideshow->getSlideshows($filter_data);
+		$results = [];
+
+		$query = $this->db->query("SHOW TABLES LIKE '" . $this->db->escape(DB_PREFIX . 'slideshow') . "'");
+
+		if ($query->num_rows) {
+			$results = $this->model_design_slideshow->getSlideshows($filter_data);
+		}
 
 		foreach ($results as $result) {
 			$data['slideshows'][] = ['edit' => $this->url->link('design/slideshow.form', 'user_token=' . $this->session->data['user_token'] . '&slideshow_id=' . $result['slideshow_id'] . $url)] + $result;

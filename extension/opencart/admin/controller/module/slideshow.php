@@ -63,7 +63,13 @@ class Slideshow extends \Opencart\System\Engine\Controller {
 		// Slideshows
 		$this->load->model('design/slideshow');
 
-		$data['slideshows'] = $this->model_design_slideshow->getSlideshows();
+		$data['slideshows'] = [];
+
+		$query = $this->db->query("SHOW TABLES LIKE '" . $this->db->escape(DB_PREFIX . 'slideshow') . "'");
+
+		if ($query->num_rows) {
+			$data['slideshows'] = $this->model_design_slideshow->getSlideshows();
+		}
 
 		if (isset($module_info['slideshow_id'])) {
 			$data['slideshow_id'] = $module_info['slideshow_id'];
