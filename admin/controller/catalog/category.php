@@ -170,6 +170,16 @@ class Category extends \Opencart\System\Engine\Controller {
 
 		$this->load->model('catalog/category');
 
+		$category_names = [];
+
+		$all_categories = $this->model_catalog_category->getCategories();
+
+		foreach ($all_categories as $all_category) {
+			$category_names[$all_category['category_id']] = $all_category['name'];
+		}
+
+		$data['category_options'] = $all_categories;
+
 		$results = $this->model_catalog_category->getCategories($filter_data);
 
 		foreach ($results as $result) {
@@ -177,10 +187,13 @@ class Category extends \Opencart\System\Engine\Controller {
 				? $result['image']
 				: 'no_image.png';
 
+			$parent_name = ($result['parent_id'] > 0 && isset($category_names[$result['parent_id']])) ? $category_names[$result['parent_id']] : '';
+
 			$data['categories'][] = [
-				'image'     => $this->model_tool_image->resize($image, 40, 40),
-				'image_raw' => $result['image'],
-				'edit'      => $this->url->link('catalog/category.form', 'user_token=' . $this->session->data['user_token'] . '&category_id=' . $result['category_id'] . $url)
+				'image'       => $this->model_tool_image->resize($image, 40, 40),
+				'image_raw'   => $result['image'],
+				'edit'        => $this->url->link('catalog/category.form', 'user_token=' . $this->session->data['user_token'] . '&category_id=' . $result['category_id'] . $url),
+				'parent_name' => $parent_name
 			] + $result;
 		}
 
@@ -666,7 +679,8 @@ class Category extends \Opencart\System\Engine\Controller {
 				'name'       => 'error_name',
 				'sort_order' => 'error_sort_order',
 				'status'     => 'error_status',
-				'image'      => 'error_image'
+				'image'      => 'error_image',
+				'parent_id'  => 'error_parent'
 			];
 
 			if (!isset($fields[$post_info['field']])) {
@@ -690,6 +704,26 @@ class Category extends \Opencart\System\Engine\Controller {
 				if ($field == 'image' && (!oc_validate_length($value, 1, 255) || !is_file(DIR_IMAGE . html_entity_decode((string)$value, ENT_QUOTES, 'UTF-8')))) {
 					$json['error'][$field] = $this->language->get($fields[$field]);
 				}
+
+				if ($field == 'parent_id') {
+					if (!ctype_digit((string)$value)) {
+						$json['error'][$field] = $this->language->get($fields[$field]);
+					} elseif ((int)$value == (int)$post_info['category_id']) {
+						$json['error'][$field] = $this->language->get($fields[$field]);
+					} elseif ((int)$value) {
+						// Cycle check (mirror stock save(): getPaths of the new parent must not contain this category)
+						$this->load->model('catalog/category');
+
+						$results = $this->model_catalog_category->getPaths((int)$value);
+
+						foreach ($results as $result) {
+							if ($result['path_id'] == (int)$post_info['category_id']) {
+								$json['error'][$field] = $this->language->get($fields[$field]);
+								break;
+							}
+						}
+					}
+				}
 			}
 		}
 
@@ -699,6 +733,10 @@ class Category extends \Opencart\System\Engine\Controller {
 			$value = ($field == 'status') ? (int)$value : $value;
 
 			if ($field == 'sort_order') {
+				$value = (int)$value;
+			}
+
+			if ($field == 'parent_id') {
 				$value = (int)$value;
 			}
 

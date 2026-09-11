@@ -1069,7 +1069,7 @@ class Category extends \Opencart\System\Engine\Model {
 	 * @return void
 	 */
 	public function updateField(int $category_id, string $field, $value): void {
-		$fields = ['name', 'sort_order', 'status', 'image'];
+		$fields = ['name', 'sort_order', 'status', 'image', 'parent_id'];
 
 		if (!in_array($field, $fields)) {
 			return;
