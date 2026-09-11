@@ -3022,6 +3022,12 @@ class Product extends \Opencart\System\Engine\Model {
 	 * @return void
 	 */
 	public function updateField(int $product_id, string $field, $value): void {
+		$fields = ['name', 'model', 'price', 'quantity', 'sort_order', 'status', 'image'];
+
+		if (!in_array($field, $fields)) {
+			return;
+		}
+
 		if ($field == 'name') {
 			$this->db->query("UPDATE `" . DB_PREFIX . "product_description` SET `name` = '" . $this->db->escape((string)$value) . "' WHERE `product_id` = '" . (int)$product_id . "'");
 		} else {
