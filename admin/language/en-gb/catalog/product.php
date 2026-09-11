@@ -143,7 +143,6 @@ $_['error_option_value']         = 'Option values required for %s!';
 // Quick edit
 $_['text_success_field']  = 'Success: You have modified this field!';
 $_['error_field']         = 'Warning: Invalid field!';
-$_['error_model']         = 'Model must be 64 characters or less!';
 $_['error_price']         = 'Price must be a number greater than or equal to zero!';
 $_['error_quantity']      = 'Quantity must be a whole number!';
 $_['error_sort_order']    = 'Sort Order must be a whole number!';
