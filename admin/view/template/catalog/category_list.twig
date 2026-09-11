@@ -6,6 +6,7 @@
           <th class="text-center" style="width: 1px;"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', $(this).prop('checked'));" class="form-check-input"/></th>
           <th class="text-center col-1">{{ column_image }}</th>
           <th><a href="{{ sort_name }}"{% if sort == 'name' %} class="{{ order|lower }}"{% endif %}>{{ column_name }}</a></th>
+          <th class="text-start">{{ column_parent }}</th>
           <th class="text-end"><a href="{{ sort_sort_order }}"{% if sort == 'sort_order' %} class="{{ order|lower }}"{% endif %}>{{ column_sort_order }}</a></th>
           <th class="text-center">{{ column_status }}</th>
           <th class="text-end col-1">{{ column_action }}</th>
@@ -23,6 +24,7 @@
                 </div>
               </td>
               <td data-quick-edit="name" data-quick-edit-type="text" data-quick-edit-url="{{ quick_edit_url }}" data-quick-edit-id="{{ category.category_id }}" data-quick-edit-id-field="category_id" data-quick-edit-value="{{ category.name }}">{{ category.name }}</td>
+              <td data-quick-edit="parent_id" data-quick-edit-type="select" data-quick-edit-url="{{ quick_edit_url }}" data-quick-edit-id="{{ category.category_id }}" data-quick-edit-id-field="category_id" data-quick-edit-value="{{ category.parent_id }}" data-quick-edit-text="{{ category.parent_name ? category.parent_name : '—' }}">{{ category.parent_name ? category.parent_name : '—' }}</td>
               <td class="text-end" data-quick-edit="sort_order" data-quick-edit-type="number" data-quick-edit-url="{{ quick_edit_url }}" data-quick-edit-id="{{ category.category_id }}" data-quick-edit-id-field="category_id" data-quick-edit-value="{{ category.sort_order }}">{{ category.sort_order }}</td>
               <td class="text-center" data-quick-edit="status" data-quick-edit-type="status" data-quick-edit-url="{{ quick_edit_url }}" data-quick-edit-id="{{ category.category_id }}" data-quick-edit-id-field="category_id" data-quick-edit-value="{{ category.status }}"><i class="fa-solid {{ category.status ? 'fa-square-check' : 'fa-square' }}"></i></td>
               <td class="text-end"><a href="{{ category.edit }}" data-bs-toggle="tooltip" title="{{ button_edit }}" class="btn btn-primary"><i class="fa-solid fa-pencil"></i></a></td>
@@ -30,7 +32,7 @@
           {% endfor %}
         {% else %}
           <tr>
-            <td class="text-center" colspan="6">{{ text_no_results }}</td>
+            <td class="text-center" colspan="7">{{ text_no_results }}</td>
           </tr>
         {% endif %}
       </tbody>
@@ -41,6 +43,13 @@
     <div class="col-sm-6 text-end">{{ results }}</div>
   </div>
 </form>
+
+<select id="quick-parent-options" class="d-none">
+  <option value="0">None</option>
+  {% for option in category_options %}
+    <option value="{{ option.category_id }}">{{ option.name }}</option>
+  {% endfor %}
+</select>
 
 <script src="view/javascript/quickedit.js" type="text/javascript"></script>
 
