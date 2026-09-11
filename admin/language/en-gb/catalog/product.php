@@ -139,3 +139,13 @@ $_['error_keyword_exists']       = 'SEO URL must be unique!';
 $_['error_keyword_character']    = 'Keyword can only use characters a-z, 0-9, - and _!';
 $_['error_required']             = '%s required!';
 $_['error_option_value']         = 'Option values required for %s!';
+
+// Quick edit
+$_['text_success_field']  = 'Success: You have modified this field!';
+$_['error_field']         = 'Warning: Invalid field!';
+$_['error_model']         = 'Model must be 64 characters or less!';
+$_['error_price']         = 'Price must be a number greater than or equal to zero!';
+$_['error_quantity']      = 'Quantity must be a whole number!';
+$_['error_sort_order']    = 'Sort Order must be a whole number!';
+$_['error_status']        = 'Invalid status value!';
+$_['error_image']         = 'Invalid image!';

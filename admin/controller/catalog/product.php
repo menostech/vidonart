@@ -368,8 +368,10 @@ class Product extends \Opencart\System\Engine\Controller {
 			}
 
 			$data['products'][] = [
-				'image'   => $this->model_tool_image->resize($image, 40, 40),
-				'price'   => $this->currency->format($result['price'], $this->config->get('config_currency')),
+				'image'     => $this->model_tool_image->resize($image, 40, 40),
+				'image_raw' => $result['image'],
+				'price_raw' => $result['price'],
+				'price'     => $this->currency->format($result['price'], $this->config->get('config_currency')),
 				'special' => $special,
 				'edit'    => $this->url->link('catalog/product.form', 'user_token=' . $this->session->data['user_token'] . '&product_id=' . $result['product_id'] . ($result['master_id'] ? '&master_id=' . $result['master_id'] : '') . $url),
 				'variant' => (!$result['master_id'] ? $this->url->link('catalog/product.form', 'user_token=' . $this->session->data['user_token'] . '&master_id=' . $result['product_id'] . $url) : '')
@@ -1590,6 +1592,98 @@ class Product extends \Opencart\System\Engine\Controller {
 				'subscription' => $subscription_plan_data,
 				'price'        => $result['price']
 			];
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
+	/**
+	 * Save Field
+	 *
+	 * @return void
+	 */
+	public function saveField(): void {
+		$this->load->language('catalog/product');
+
+		$json = [];
+
+		if (!$this->user->hasPermission('modify', 'catalog/product')) {
+			$json['error']['warning'] = $this->language->get('error_permission');
+		}
+
+		$required = [
+			'product_id' => 0,
+			'field'      => '',
+			'value'      => ''
+		];
+
+		$post_info = $this->request->post + $required;
+
+		if (!$json) {
+			$fields = [
+				'name'       => 'error_name',
+				'model'      => 'error_model',
+				'price'      => 'error_price',
+				'quantity'   => 'error_quantity',
+				'sort_order' => 'error_sort_order',
+				'status'     => 'error_status',
+				'image'      => 'error_image'
+			];
+
+			if (!isset($fields[$post_info['field']])) {
+				$json['error']['warning'] = $this->language->get('error_field');
+			} else {
+				$field = $post_info['field'];
+				$value = $post_info['value'];
+
+				if ($field == 'name' && !oc_validate_length($value, 1, 255)) {
+					$json['error'][$field] = $this->language->get($fields[$field]);
+				}
+
+				if ($field == 'model' && !oc_validate_length($value, 0, 64)) {
+					$json['error'][$field] = $this->language->get($fields[$field]);
+				}
+
+				if ($field == 'price' && (!is_numeric($value) || (float)$value < 0)) {
+					$json['error'][$field] = $this->language->get($fields[$field]);
+				}
+
+				if ($field == 'quantity' && (!ctype_digit((string)$value))) {
+					$json['error'][$field] = $this->language->get($fields[$field]);
+				}
+
+				if ($field == 'sort_order' && !ctype_digit((string)$value)) {
+					$json['error'][$field] = $this->language->get($fields[$field]);
+				}
+
+				if ($field == 'status' && !in_array((string)$value, ['0', '1'])) {
+					$json['error'][$field] = $this->language->get($fields[$field]);
+				}
+
+				if ($field == 'image' && (!oc_validate_length($value, 1, 255) || !is_file(DIR_IMAGE . html_entity_decode((string)$value, ENT_QUOTES, 'UTF-8')))) {
+					$json['error'][$field] = $this->language->get($fields[$field]);
+				}
+			}
+		}
+
+		if (!$json) {
+			$this->load->model('catalog/product');
+
+			$value = ($field == 'status') ? (int)$value : $value;
+
+			if ($field == 'price') {
+				$value = (float)$value;
+			}
+
+			if ($field == 'quantity' || $field == 'sort_order') {
+				$value = (int)$value;
+			}
+
+			$this->model_catalog_product->updateField((int)$post_info['product_id'], $field, $value);
+
+			$json['success'] = $this->language->get('text_success_field');
+			$json['value'] = (string)$value;
 		}
 
 		$this->response->addHeader('Content-Type: application/json');

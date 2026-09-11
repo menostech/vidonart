@@ -3011,4 +3011,21 @@ class Product extends \Opencart\System\Engine\Model {
 
 		return (int)$query->row['total'];
 	}
+
+	/**
+	 * Update Field
+	 *
+	 * @param int    $product_id product id
+	 * @param string $field      field name
+	 * @param mixed  $value      field value
+	 *
+	 * @return void
+	 */
+	public function updateField(int $product_id, string $field, $value): void {
+		if ($field == 'name') {
+			$this->db->query("UPDATE `" . DB_PREFIX . "product_description` SET `name` = '" . $this->db->escape((string)$value) . "' WHERE `product_id` = '" . (int)$product_id . "'");
+		} else {
+			$this->db->query("UPDATE `" . DB_PREFIX . "product` SET `" . $field . "` = '" . $this->db->escape((string)$value) . "' WHERE `product_id` = '" . (int)$product_id . "'");
+		}
+	}
 }
