@@ -94,7 +94,7 @@ After the `updateField()` call in the normalization block, repair the category p
 			$this->model_catalog_category->updateField((int)$post_info['category_id'], $field, $value);
 
 			if ($field == 'parent_id') {
-				$this->model_catalog_category->repairCategories((int)$post_info['category_id']);
+				$this->model_catalog_category->repairCategories((int)$value);
 			}
 ```
 
