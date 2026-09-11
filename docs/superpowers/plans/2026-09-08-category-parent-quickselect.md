@@ -88,6 +88,16 @@ In the normalization block, add:
 			}
 ```
 
+After the `updateField()` call in the normalization block, repair the category paths when the parent changes (mirrors stock `editCategory()` — without it `oc_category_path` stays stale and breadcrumbs/SEO break):
+
+```php
+			$this->model_catalog_category->updateField((int)$post_info['category_id'], $field, $value);
+
+			if ($field == 'parent_id') {
+				$this->model_catalog_category->repairCategories((int)$post_info['category_id']);
+			}
+```
+
 - [ ] **Step 2: Add parent_id to the model whitelist**
 
 In `admin/model/catalog/category.php`, `updateField()`, change:

@@ -742,6 +742,10 @@ class Category extends \Opencart\System\Engine\Controller {
 
 			$this->model_catalog_category->updateField((int)$post_info['category_id'], $field, $value);
 
+			if ($field == 'parent_id') {
+				$this->model_catalog_category->repairCategories((int)$post_info['category_id']);
+			}
+
 			$json['success'] = $this->language->get('text_success_field');
 			$json['value'] = (string)$value;
 		}
