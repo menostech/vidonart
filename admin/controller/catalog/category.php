@@ -227,6 +227,13 @@ class Category extends \Opencart\System\Engine\Controller {
 		$data['sort'] = $sort;
 		$data['order'] = $order;
 
+		$data['quick_edit_url'] = $this->url->link('catalog/category.saveField', 'user_token=' . $this->session->data['user_token']);
+
+		// Placeholder
+		$this->load->model('tool/image');
+
+		$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 40, 40);
+
 		return $this->load->view('catalog/category_list', $data);
 	}
 
