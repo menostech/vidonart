@@ -48,3 +48,10 @@ $_['error_parent']            = 'The parent category you have chosen is a child 
 $_['error_keyword']           = 'SEO URL must be between 1 and 64 characters!';
 $_['error_keyword_exists']    = 'SEO URL must be unique!';
 $_['error_keyword_character'] = 'Keyword can only use characters a-z, 0-9, - and _!';
+
+// Quick edit
+$_['text_success_field']  = 'Success: You have modified this field!';
+$_['error_field']         = 'Warning: Invalid field!';
+$_['error_sort_order']    = 'Sort Order must be a whole number!';
+$_['error_status']        = 'Invalid status value!';
+$_['error_image']         = 'Invalid image!';

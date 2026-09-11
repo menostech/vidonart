@@ -178,8 +178,9 @@ class Category extends \Opencart\System\Engine\Controller {
 				: 'no_image.png';
 
 			$data['categories'][] = [
-				'image' => $this->model_tool_image->resize($image, 40, 40),
-				'edit'  => $this->url->link('catalog/category.form', 'user_token=' . $this->session->data['user_token'] . '&category_id=' . $result['category_id'] . $url)
+				'image'     => $this->model_tool_image->resize($image, 40, 40),
+				'image_raw' => $result['image'],
+				'edit'      => $this->url->link('catalog/category.form', 'user_token=' . $this->session->data['user_token'] . '&category_id=' . $result['category_id'] . $url)
 			] + $result;
 		}
 
@@ -626,6 +627,79 @@ class Category extends \Opencart\System\Engine\Controller {
 		}
 
 		array_multisort($sort_order, SORT_ASC, $json);
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
+	/**
+	 * Save Field
+	 *
+	 * @return void
+	 */
+	public function saveField(): void {
+		$this->load->language('catalog/category');
+
+		$json = [];
+
+		if (!$this->user->hasPermission('modify', 'catalog/category')) {
+			$json['error']['warning'] = $this->language->get('error_permission');
+		}
+
+		$required = [
+			'category_id' => 0,
+			'field'       => '',
+			'value'       => ''
+		];
+
+		$post_info = $this->request->post + $required;
+
+		if (!$json) {
+			$fields = [
+				'name'       => 'error_name',
+				'sort_order' => 'error_sort_order',
+				'status'     => 'error_status',
+				'image'      => 'error_image'
+			];
+
+			if (!isset($fields[$post_info['field']])) {
+				$json['error']['warning'] = $this->language->get('error_field');
+			} else {
+				$field = $post_info['field'];
+				$value = $post_info['value'];
+
+				if ($field == 'name' && !oc_validate_length($value, 1, 255)) {
+					$json['error'][$field] = $this->language->get($fields[$field]);
+				}
+
+				if ($field == 'sort_order' && !ctype_digit((string)$value)) {
+					$json['error'][$field] = $this->language->get($fields[$field]);
+				}
+
+				if ($field == 'status' && !in_array((string)$value, ['0', '1'])) {
+					$json['error'][$field] = $this->language->get($fields[$field]);
+				}
+
+				if ($field == 'image' && (!oc_validate_length($value, 1, 255) || !is_file(DIR_IMAGE . html_entity_decode((string)$value, ENT_QUOTES, 'UTF-8')))) {
+					$json['error'][$field] = $this->language->get($fields[$field]);
+				}
+			}
+		}
+
+		if (!$json) {
+			$this->load->model('catalog/category');
+
+			$value = ($field == 'status') ? (int)$value : $value;
+
+			if ($field == 'sort_order') {
+				$value = (int)$value;
+			}
+
+			$this->model_catalog_category->updateField((int)$post_info['category_id'], $field, $value);
+
+			$json['success'] = $this->language->get('text_success_field');
+			$json['value'] = (string)$value;
+		}
 
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));

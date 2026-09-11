@@ -1058,4 +1058,27 @@ class Category extends \Opencart\System\Engine\Model {
 
 		return (int)$query->row['total'];
 	}
+
+	/**
+	 * Update Field
+	 *
+	 * @param int    $category_id category id
+	 * @param string $field       field name
+	 * @param mixed  $value       field value
+	 *
+	 * @return void
+	 */
+	public function updateField(int $category_id, string $field, $value): void {
+		$fields = ['name', 'sort_order', 'status', 'image'];
+
+		if (!in_array($field, $fields)) {
+			return;
+		}
+
+		if ($field == 'name') {
+			$this->db->query("UPDATE `" . DB_PREFIX . "category_description` SET `name` = '" . $this->db->escape((string)$value) . "' WHERE `category_id` = '" . (int)$category_id . "'");
+		} else {
+			$this->db->query("UPDATE `" . DB_PREFIX . "category` SET `" . $field . "` = '" . $this->db->escape((string)$value) . "' WHERE `category_id` = '" . (int)$category_id . "'");
+		}
+	}
 }
