@@ -182,4 +182,61 @@
             showAlert(errors);
         });
     });
+
+    // ---- select cells (dropdown, save on change) ----
+    $(document).on('click', '[data-quick-edit][data-quick-edit-type="select"]', function() {
+        var cell = this;
+
+        if ($(cell).find('select').length || $(cell).hasClass('quick-editing')) {
+            return;
+        }
+
+        $(cell).addClass('quick-editing');
+
+        var url = $(cell).data('quick-edit-url');
+        var id = $(cell).data('quick-edit-id');
+        var current = $(cell).data('quick-edit-value');
+
+        var select = $('<select>', {
+            class: 'form-select form-select-sm',
+            style: 'min-width: 180px;'
+        });
+
+        $('#quick-parent-options').find('option').each(function() {
+            select.append($('<option>', { value: $(this).val(), text: $(this).text() }));
+        });
+
+        select.val(String(current));
+
+        $(cell).html(select);
+
+        select.on('change', function() {
+            var value = select.val();
+
+            if (value === String(current)) {
+                $(cell).html($('<span>').text($(cell).data('quick-edit-text')));
+                $(cell).removeClass('quick-editing');
+                return;
+            }
+
+            var data = {};
+            data[$(cell).data('quick-edit-id-field')] = id;
+            data['field'] = 'parent_id';
+            data['value'] = value;
+
+            post(url, data, function(json) {
+                var label = select.find('option:selected').text();
+
+                $(cell).data('quick-edit-value', value);
+                $(cell).data('quick-edit-text', label);
+                $(cell).html($('<span>').text(label));
+                flash(cell);
+            }, function(errors) {
+                $(cell).html($('<span>').text($(cell).data('quick-edit-text')));
+                showAlert(errors);
+            }).always(function() {
+                $(cell).removeClass('quick-editing');
+            });
+        });
+    });
 })(jQuery);
