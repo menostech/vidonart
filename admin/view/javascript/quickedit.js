@@ -146,11 +146,30 @@
     });
 
     // ---- image cells (file manager pick -> auto save) ----
-    $(document).on('change', '[data-quick-edit][data-quick-edit-type="image"] input[type="hidden"]', function() {
-        var cell = $(this).closest('[data-quick-edit][data-quick-edit-type="image"]');
+    var quickEditTarget = null;
+
+    // record the target input when the image button opens the file manager
+    $(document).on('click', '[data-quick-edit][data-quick-edit-type="image"] button[data-oc-toggle="image"]', function() {
+        quickEditTarget = $(this).data('oc-target');
+    });
+
+    // after the file manager writes the value (its #modal-image delegated handler
+    // runs before this document-level handler), POST the image field
+    $(document).on('click', '#modal-image a.thumbnail', function() {
+        if (!quickEditTarget) {
+            return;
+        }
+
+        var input = $(quickEditTarget);
+        var cell = input.closest('[data-quick-edit][data-quick-edit-type="image"]');
+
+        if (!cell.length) {
+            return;
+        }
+
         var url = cell.data('quick-edit-url');
         var id = cell.data('quick-edit-id');
-        var value = $(this).val();
+        var value = input.val();
 
         var data = {};
         data[cell.data('quick-edit-id-field')] = id;
