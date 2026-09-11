@@ -21,11 +21,8 @@
               <td class="text-center"><input type="checkbox" name="selected[]" value="{{ product.product_id }}" class="form-check-input"/></td>
               <td class="text-center" data-quick-edit="image" data-quick-edit-type="image" data-quick-edit-url="{{ quick_edit_url }}" data-quick-edit-id="{{ product.product_id }}" data-quick-edit-id-field="product_id">
                 <div class="border rounded d-inline-block">
-                  <img src="{{ product.image }}" alt="" title="" id="thumb-quick-{{ product.product_id }}" data-oc-placeholder="{{ placeholder }}" class="img-fluid" style="width: 40px; height: 40px;"/>
+                  <img src="{{ product.image }}" alt="" title="" id="thumb-quick-{{ product.product_id }}" data-oc-toggle="image" data-oc-target="#input-quick-{{ product.product_id }}-image" data-oc-thumb="#thumb-quick-{{ product.product_id }}" data-oc-placeholder="{{ placeholder }}" class="img-fluid" style="width: 40px; height: 40px; cursor: pointer;"/>
                   <input type="hidden" name="quick-image-{{ product.product_id }}" value="{{ product.image_raw }}" id="input-quick-{{ product.product_id }}-image"/>
-                  <div class="d-grid">
-                    <button type="button" data-oc-toggle="image" data-oc-target="#input-quick-{{ product.product_id }}-image" data-oc-thumb="#thumb-quick-{{ product.product_id }}" class="btn btn-primary rounded-0 btn-sm"><i class="fa-solid fa-pencil"></i></button>
-                  </div>
                 </div>
               </td>
               <td data-quick-edit="name" data-quick-edit-type="text" data-quick-edit-url="{{ quick_edit_url }}" data-quick-edit-id="{{ product.product_id }}" data-quick-edit-id-field="product_id" data-quick-edit-value="{{ product.name }}">{{ product.name }}</td>

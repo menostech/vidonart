@@ -148,8 +148,8 @@
     // ---- image cells (file manager pick -> auto save) ----
     var quickEditTarget = null;
 
-    // record the target input when the image button opens the file manager
-    $(document).on('click', '[data-quick-edit][data-quick-edit-type="image"] button[data-oc-toggle="image"]', function() {
+    // record the target input when the image opens the file manager
+    $(document).on('click', '[data-quick-edit][data-quick-edit-type="image"] [data-oc-toggle="image"]', function() {
         quickEditTarget = $(this).data('oc-target');
     });
 
