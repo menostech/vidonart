@@ -101,15 +101,33 @@
                     {% if option.type == 'select' %}
                       <div class="mb-3{% if option.required %} required{% endif %}">
                         <label for="input-option-{{ option.product_option_id }}" class="form-label">{{ option.name }}</label>
-                        <select name="option[{{ option.product_option_id }}]" id="input-option-{{ option.product_option_id }}" class="form-select">
-                          <option value="">{{ text_select }}</option>
-                          {% for option_value in option.product_option_value %}
-                            <option value="{{ option_value.product_option_value_id }}">{{ option_value.name }}
-                              {% if option_value.price %}
-                                ({{ option_value.price_prefix }}{{ option_value.price }})
-                              {% endif %}</option>
-                          {% endfor %}
-                        </select>
+                        {% set has_swatch = false %}
+                        {% for option_value in option.product_option_value %}
+                          {% if option_value.color %}{% set has_swatch = true %}{% endif %}
+                        {% endfor %}
+                        {% if has_swatch %}
+                          <select name="option[{{ option.product_option_id }}]" id="input-option-{{ option.product_option_id }}" class="form-select d-none">
+                            <option value="">{{ text_select }}</option>
+                            {% for option_value in option.product_option_value %}
+                              <option value="{{ option_value.product_option_value_id }}"{% if option_value.price %} data-price="{{ option_value.price_prefix }}{{ option_value.price }}"{% endif %}>{{ option_value.name }}{% if option_value.price %} ({{ option_value.price_prefix }}{{ option_value.price }}){% endif %}</option>
+                            {% endfor %}
+                          </select>
+                          <div class="va-swatches" data-target="#input-option-{{ option.product_option_id }}">
+                            {% for option_value in option.product_option_value %}
+                              <button type="button" class="va-swatch" data-value="{{ option_value.product_option_value_id }}" data-color="{{ option_value.color }}" style="background: {{ option_value.color }};" title="{{ option_value.name }}"></button>
+                            {% endfor %}
+                          </div>
+                        {% else %}
+                          <select name="option[{{ option.product_option_id }}]" id="input-option-{{ option.product_option_id }}" class="form-select">
+                            <option value="">{{ text_select }}</option>
+                            {% for option_value in option.product_option_value %}
+                              <option value="{{ option_value.product_option_value_id }}">{{ option_value.name }}
+                                {% if option_value.price %}
+                                  ({{ option_value.price_prefix }}{{ option_value.price }})
+                                {% endif %}</option>
+                            {% endfor %}
+                          </select>
+                        {% endif %}
                         <div id="error-option-{{ option.product_option_id }}" class="invalid-feedback"></div>
                       </div>
                     {% endif %}
@@ -117,20 +135,40 @@
                     {% if option.type == 'radio' %}
                       <div class="mb-3{% if option.required %} required{% endif %}">
                         <label class="form-label">{{ option.name }}</label>
-                        <div id="input-option-{{ option.product_option_id }}">
-                          {% for option_value in option.product_option_value %}
-                            <div class="form-check">
-                              <input type="radio" name="option[{{ option.product_option_id }}]" value="{{ option_value.product_option_value_id }}" id="input-option-value-{{ option_value.product_option_value_id }}" class="form-check-input"/>
-                              <label for="input-option-value-{{ option_value.product_option_value_id }}" class="form-check-label">
-                                {% if option_value.image %}
-                                  <img src="{{ option_value.image }}" alt="{{ option_value.name }} {% if option_value.price %}{{ option_value.price_prefix }} {{ option_value.price }}{% endif %}" class="img-thumbnail"/>{% endif %}
-                                {{ option_value.name }}
-                                {% if option_value.price %}
-                                  ({{ option_value.price_prefix }}{{ option_value.price }})
-                                {% endif %}</label>
-                            </div>
-                          {% endfor %}
-                        </div>
+                        {% set has_swatch = false %}
+                        {% for option_value in option.product_option_value %}
+                          {% if option_value.color %}{% set has_swatch = true %}{% endif %}
+                        {% endfor %}
+                        {% if has_swatch %}
+                          <div class="va-swatches mb-2" data-target="input-option-{{ option.product_option_id }}">
+                            {% for option_value in option.product_option_value %}
+                              <button type="button" class="va-swatch" data-value="{{ option_value.product_option_value_id }}" data-color="{{ option_value.color }}" style="background: {{ option_value.color }};" title="{{ option_value.name }}"></button>
+                            {% endfor %}
+                          </div>
+                          <div class="d-none" id="input-option-{{ option.product_option_id }}">
+                            {% for option_value in option.product_option_value %}
+                              <div class="form-check">
+                                <input type="radio" name="option[{{ option.product_option_id }}]" value="{{ option_value.product_option_value_id }}" id="input-option-value-{{ option_value.product_option_value_id }}" class="form-check-input"/>
+                                <label for="input-option-value-{{ option_value.product_option_value_id }}" class="form-check-label">{{ option_value.name }}{% if option_value.price %} ({{ option_value.price_prefix }}{{ option_value.price }}){% endif %}</label>
+                              </div>
+                            {% endfor %}
+                          </div>
+                        {% else %}
+                          <div id="input-option-{{ option.product_option_id }}">
+                            {% for option_value in option.product_option_value %}
+                              <div class="form-check">
+                                <input type="radio" name="option[{{ option.product_option_id }}]" value="{{ option_value.product_option_value_id }}" id="input-option-value-{{ option_value.product_option_value_id }}" class="form-check-input"/>
+                                <label for="input-option-value-{{ option_value.product_option_value_id }}" class="form-check-label">
+                                  {% if option_value.image %}
+                                    <img src="{{ option_value.image }}" alt="{{ option_value.name }} {% if option_value.price %}{{ option_value.price_prefix }} {{ option_value.price }}{% endif %}" class="img-thumbnail"/>{% endif %}
+                                  {{ option_value.name }}
+                                  {% if option_value.price %}
+                                    ({{ option_value.price_prefix }}{{ option_value.price }})
+                                  {% endif %}</label>
+                              </div>
+                            {% endfor %}
+                          </div>
+                        {% endif %}
                         <div id="error-option-{{ option.product_option_id }}" class="invalid-feedback"></div>
                       </div>
                     {% endif %}
@@ -354,6 +392,43 @@ $(document).ready(function() {
         delegate: 'a',
         gallery: {
             enabled: true
+        }
+    });
+});
+
+// ---- color swatches ----
+$('.va-swatches').on('click', '.va-swatch', function() {
+    var container = $(this).closest('.va-swatches');
+    var target = container.data('target');
+
+    $(container).find('.va-swatch').removeClass('active');
+    $(this).addClass('active');
+
+    if ($(target).is('select')) {
+        $(target).val($(this).data('value')).trigger('change');
+    } else {
+        $('#' + target + ' input[type="radio"][value="' + $(this).data('value') + '"]').prop('checked', true);
+    }
+});
+
+// URL preselect: ?option[<product_option_id>]=<product_option_value_id>
+$(document).ready(function() {
+    var params = new URLSearchParams(location.search);
+
+    $('.va-swatches').each(function() {
+        var container = $(this);
+        var target = container.data('target');
+        var id = $(target).is('select') ? $(target).attr('id') : target;
+        var match = params.get('option[' + id.replace('input-option-', '') + ']');
+
+        if (!match) {
+            return;
+        }
+
+        var swatch = container.find('.va-swatch[data-value="' + match + '"]');
+
+        if (swatch.length) {
+            swatch.trigger('click');
         }
     });
 });

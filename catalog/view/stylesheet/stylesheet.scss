@@ -1257,3 +1257,29 @@ footer hr {
 .va-slideshow .carousel-control-next {
   right: 16px;
 }
+
+/* ---------- color swatches ---------- */
+.va-swatches {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.va-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--va-border);
+  padding: 0;
+  cursor: pointer;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.va-swatch:hover {
+  border-color: var(--va-ink);
+}
+
+.va-swatch.active {
+  border-color: var(--va-ink);
+  box-shadow: 0 0 0 2px var(--va-surface), 0 0 0 3.5px var(--va-ink);
+}
