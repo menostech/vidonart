@@ -140,7 +140,7 @@
                           {% if option_value.color %}{% set has_swatch = true %}{% endif %}
                         {% endfor %}
                         {% if has_swatch %}
-                          <div class="va-swatches mb-2" data-target="input-option-{{ option.product_option_id }}">
+                          <div class="va-swatches mb-2" data-target="#input-option-{{ option.product_option_id }}">
                             {% for option_value in option.product_option_value %}
                               <button type="button" class="va-swatch" data-value="{{ option_value.product_option_value_id }}" data-color="{{ option_value.color }}" style="background: {{ option_value.color }};" title="{{ option_value.name }}"></button>
                             {% endfor %}
@@ -407,7 +407,7 @@ $('.va-swatches').on('click', '.va-swatch', function() {
     if ($(target).is('select')) {
         $(target).val($(this).data('value')).trigger('change');
     } else {
-        $('#' + target + ' input[type="radio"][value="' + $(this).data('value') + '"]').prop('checked', true);
+        $(target + ' input[type="radio"][value="' + $(this).data('value') + '"]').prop('checked', true).trigger('change');
     }
 });
 
@@ -418,7 +418,7 @@ $(document).ready(function() {
     $('.va-swatches').each(function() {
         var container = $(this);
         var target = container.data('target');
-        var id = $(target).is('select') ? $(target).attr('id') : target;
+        var id = ($(target).is('select') ? $(target).attr('id') : target).replace(/^#/, '');
         var match = params.get('option[' + id.replace('input-option-', '') + ']');
 
         if (!match) {

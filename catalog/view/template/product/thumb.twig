@@ -48,35 +48,33 @@
   </div>
   <script type="text/javascript"><!--
 $(document).ready(function() {
-    $('.va-card-swatches').each(function() {
-        var container = $(this);
-        var image = $('#' + 'va-card-image-' + {{ product_id }});
+    var container = $('#va-card-image-{{ product_id }}').closest('.product-thumb').find('.va-card-swatches');
+    var image = $('#va-card-image-{{ product_id }}');
 
-        if (!image.length) {
-            return;
+    if (!container.length || !image.length) {
+        return;
+    }
+
+    var original = image.attr('src');
+
+    container.on('mouseenter', '.va-card-swatch', function() {
+        var hover = $(this).data('image');
+
+        if (hover) {
+            image.attr('src', hover);
         }
+    });
 
-        var original = image.attr('src');
+    container.on('mouseleave', function() {
+        image.attr('src', original);
+    });
 
-        container.on('mouseenter', '.va-card-swatch', function() {
-            var hover = $(this).data('image');
+    container.on('click', '.va-card-swatch', function() {
+        var href = '{{ href|escape('js') }}';
 
-            if (hover) {
-                image.attr('src', hover);
-            }
-        });
+        var sep = href.indexOf('?') !== -1 ? '&' : '?';
 
-        container.on('mouseleave', function() {
-            image.attr('src', original);
-        });
-
-        container.on('click', '.va-card-swatch', function() {
-            var href = '{{ href|escape('js') }}';
-
-            var sep = href.indexOf('?') !== -1 ? '&' : '?';
-
-            location = href + sep + 'option[' + container.data('option-id') + ']=' + $(this).data('value');
-        });
+        location = href + sep + 'option[' + container.data('option-id') + ']=' + $(this).data('value');
     });
 });
 //--></script>
