@@ -4242,6 +4242,12 @@ function oc_db_schema() {
 				'type' => 'varchar(255)'
 			],
 			[
+				'name'     => 'color',
+				'type'     => 'varchar(7)',
+				'not_null' => true,
+				'default'  => ''
+			],
+			[
 				'name'    => 'sort_order',
 				'type'    => 'int(3)',
 				'default' => '0'
