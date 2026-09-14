@@ -1,5 +1,5 @@
 <div class="product-thumb">
-  <div class="image"><a href="{{ href }}"><img src="{{ thumb }}" alt="{{ name }}" title="{{ name }}" class="img-fluid"/></a>
+  <div class="image"><a href="{{ href }}"><img src="{{ thumb }}" id="va-card-image-{{ product_id }}" alt="{{ name }}" title="{{ name }}" class="img-fluid"/></a>
     {% if special %}<span class="va-badge">{{ text_sale }}</span>{% endif %}
   </div>
   <div class="content">
@@ -28,6 +28,13 @@
           {% endfor %}
         </div>
       {% endif %}
+      {% if swatches %}
+        <div class="va-card-swatches" data-option-id="{{ swatch_option_id }}">
+          {% for swatch in swatches %}
+            <button type="button" class="va-card-swatch" data-value="{{ swatch.product_option_value_id }}" data-color="{{ swatch.color }}" data-image="{{ swatch.image }}" style="background: {{ swatch.color }};" title="{{ swatch.name }}"></button>
+          {% endfor %}
+        </div>
+      {% endif %}
       <a href="index.php?route=information/custom&product_id={{ product_id }}" class="va-customize">{{ text_customize }} →</a>
     </div>
     <form method="post" data-oc-toggle="ajax" data-oc-load="{{ cart }}" data-oc-target="#cart">
@@ -39,4 +46,38 @@
       <input type="hidden" name="product_id" value="{{ product_id }}"/> <input type="hidden" name="quantity" value="{{ minimum }}"/>
     </form>
   </div>
+  <script type="text/javascript"><!--
+$(document).ready(function() {
+    $('.va-card-swatches').each(function() {
+        var container = $(this);
+        var image = $('#' + 'va-card-image-' + {{ product_id }});
+
+        if (!image.length) {
+            return;
+        }
+
+        var original = image.attr('src');
+
+        container.on('mouseenter', '.va-card-swatch', function() {
+            var hover = $(this).data('image');
+
+            if (hover) {
+                image.attr('src', hover);
+            }
+        });
+
+        container.on('mouseleave', function() {
+            image.attr('src', original);
+        });
+
+        container.on('click', '.va-card-swatch', function() {
+            var href = '{{ href|escape('js') }}';
+
+            var sep = href.indexOf('?') !== -1 ? '&' : '?';
+
+            location = href + sep + 'option[' + container.data('option-id') + ']=' + $(this).data('value');
+        });
+    });
+});
+//--></script>
 </div>

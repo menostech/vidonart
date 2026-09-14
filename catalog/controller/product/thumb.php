@@ -38,6 +38,45 @@ class Thumb extends \Opencart\System\Engine\Controller {
 
 		$data['review_status'] = (int)$this->config->get('config_review_status');
 
+		// Swatches (first option that has colored values)
+		$data['swatches'] = [];
+		$data['swatch_option_id'] = 0;
+
+		if (!empty($data['product_id'])) {
+			$this->load->model('catalog/product');
+
+			$this->load->model('tool/image');
+
+			$options = $this->model_catalog_product->getOptions((int)$data['product_id']);
+
+			foreach ($options as $option) {
+				$colored = [];
+
+				foreach ($option['product_option_value'] as $value) {
+					if (!empty($value['color'])) {
+						$image = '';
+
+						if ($value['image'] && is_file(DIR_IMAGE . html_entity_decode($value['image'], ENT_QUOTES, 'UTF-8'))) {
+							$image = $this->model_tool_image->resize(html_entity_decode($value['image'], ENT_QUOTES, 'UTF-8'), 500, 500);
+						}
+
+						$colored[] = [
+							'product_option_value_id' => $value['product_option_value_id'],
+							'color'                   => $value['color'],
+							'image'                   => $image,
+							'name'                    => $value['name']
+						];
+					}
+				}
+
+				if ($colored) {
+					$data['swatches'] = $colored;
+					$data['swatch_option_id'] = (int)$option['product_option_id'];
+					break;
+				}
+			}
+		}
+
 		return $this->load->view('product/thumb', $data);
 	}
 }
