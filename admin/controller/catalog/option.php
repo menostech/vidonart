@@ -273,6 +273,7 @@ class Option extends \Opencart\System\Engine\Controller {
 				'option_value_id'          => $option_value['option_value_id'],
 				'option_value_description' => $option_value['option_value_description'],
 				'image'                    => $image,
+				'color'                    => $option_value['color'] ?? '',
 				'thumb'                    => $this->model_tool_image->resize($thumb, $this->config->get('config_image_default_width'), $this->config->get('config_image_default_height')),
 				'sort_order'               => $option_value['sort_order']
 			];

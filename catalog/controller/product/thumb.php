@@ -50,6 +50,10 @@ class Thumb extends \Opencart\System\Engine\Controller {
 			$options = $this->model_catalog_product->getOptions((int)$data['product_id']);
 
 			foreach ($options as $option) {
+				if (!in_array($option['type'], ['select', 'radio'])) {
+					continue;
+				}
+
 				$colored = [];
 
 				foreach ($option['product_option_value'] as $value) {
