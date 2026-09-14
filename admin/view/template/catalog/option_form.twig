@@ -77,6 +77,7 @@
                 <tr>
                   <th class="required">{{ entry_option_value }}</th>
                   <th class="text-center">{{ entry_image }}</th>
+                  <th>{{ entry_color }}</th>
                   <th class="text-end">{{ entry_sort_order }}</th>
                   <th></th>
                 </tr>
@@ -102,6 +103,7 @@
                           <button type="button" data-oc-toggle="clear" data-oc-target="#input-image-{{ option_value_row }}" data-oc-thumb="#thumb-image-{{ option_value_row }}" class="btn btn-warning rounded-0"><i class="fa-regular fa-trash-can"></i> {{ button_clear }}</button>
                         </div>
                       </div></td>
+                    <td style="width: 80px;"><input type="color" name="option_value[{{ option_value_row }}][color]" value="{{ option_value.color }}" id="input-color-{{ option_value_row }}" class="form-control form-control-color"/></td>
                     <td class="text-end"><input type="text" name="option_value[{{ option_value_row }}][sort_order]" value="{{ option_value.sort_order }}" placeholder="{{ entry_sort_order }}" class="form-control"/></td>
                     <td class="text-end"><button type="button" onclick="$('#option-value-row-{{ option_value_row }}').remove();" data-bs-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fa-solid fa-minus-circle"></i></button></td>
                   </tr>
@@ -161,6 +163,7 @@ function addOptionValue() {
     html += '      <button type="button" data-oc-toggle="clear" data-oc-target="#input-image-' + option_value_row + '" data-oc-thumb="#thumb-image-' + option_value_row + '" class="btn btn-warning rounded-0"><i class="fa-regular fa-trash-can"></i> {{ button_clear|escape('js') }}</button>';
     html += '    </div>';
     html += '  </div></td>';
+    html += '  <td style="width: 80px;"><input type="color" name="option_value[' + option_value_row + '][color]" value="#000000" id="input-color-' + option_value_row + '" class="form-control form-control-color"/></td>';
     html += '  <td class="text-end"><input type="text" name="option_value[' + option_value_row + '][sort_order]" value="" placeholder="{{ entry_sort_order|escape('js') }}" class="form-control"/></td>';
     html += '  <td class="text-end"><button type="button" onclick="$(\'#option-value-row-' + option_value_row + '\').remove();" data-bs-toggle="tooltip" title="{{ button_remove|escape('js') }}" class="btn btn-danger"><i class="fa-solid fa-minus-circle"></i></button></td>';
     html += '</tr>';

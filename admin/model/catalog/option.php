@@ -352,11 +352,11 @@ class Option extends \Opencart\System\Engine\Model {
 	 */
 	public function addValue(int $option_id, array $data): int {
 		if ($data['option_value_id']) {
-			$this->db->query("INSERT INTO `" . DB_PREFIX . "option_value` SET `option_value_id` = '" . (int)$data['option_value_id'] . "', `option_id` = '" . (int)$option_id . "', `image` = '" . $this->db->escape(html_entity_decode($data['image'], ENT_QUOTES, 'UTF-8')) . "', `sort_order` = '" . (int)$data['sort_order'] . "'");
+			$this->db->query("INSERT INTO `" . DB_PREFIX . "option_value` SET `option_value_id` = '" . (int)$data['option_value_id'] . "', `option_id` = '" . (int)$option_id . "', `image` = '" . $this->db->escape(html_entity_decode($data['image'], ENT_QUOTES, 'UTF-8')) . "', `color` = '" . $this->db->escape((string)($data['color'] ?? '')) . "', `sort_order` = '" . (int)$data['sort_order'] . "'");
 
 			$option_value_id = $data['option_value_id'];
 		} else {
-			$this->db->query("INSERT INTO `" . DB_PREFIX . "option_value` SET `option_id` = '" . (int)$option_id . "', `image` = '" . $this->db->escape(html_entity_decode($data['image'], ENT_QUOTES, 'UTF-8')) . "', `sort_order` = '" . (int)$data['sort_order'] . "'");
+			$this->db->query("INSERT INTO `" . DB_PREFIX . "option_value` SET `option_id` = '" . (int)$option_id . "', `image` = '" . $this->db->escape(html_entity_decode($data['image'], ENT_QUOTES, 'UTF-8')) . "', `color` = '" . $this->db->escape((string)($data['color'] ?? '')) . "', `sort_order` = '" . (int)$data['sort_order'] . "'");
 
 			$option_value_id = $this->db->getLastId();
 		}
