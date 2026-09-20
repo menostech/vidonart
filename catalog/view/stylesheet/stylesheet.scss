@@ -1303,3 +1303,37 @@ footer hr {
 .va-card-swatch:hover {
   border-color: var(--va-ink);
 }
+
+/* ---------- account cards ---------- */
+.va-account-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 100%;
+  padding: 28px 16px;
+  background: var(--va-surface);
+  border: 1px solid var(--va-border);
+  text-align: center;
+  text-decoration: none;
+  transition: border-color .25s ease;
+  font-size: 0.8125rem;
+  color: var(--va-ink);
+}
+
+.va-account-card i {
+  font-size: 24px;
+  color: var(--va-tea-dark);
+  transition: color .25s ease;
+}
+
+.va-account-card:hover {
+  border-color: var(--va-ink);
+  color: var(--va-ink);
+  text-decoration: none;
+}
+
+.va-account-card:hover i {
+  color: var(--va-gold);
+}

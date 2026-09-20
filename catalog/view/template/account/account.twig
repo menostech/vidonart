@@ -3,47 +3,47 @@
   <ul class="breadcrumb">
     {% for breadcrumb in breadcrumbs %}
       <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
-       {% endfor %}
+    {% endfor %}
   </ul>
   {% if success %}
     <div class="alert alert-success alert-dismissible"><i class="fa-solid fa-circle-check"></i> {{ success }}</div>
   {% endif %}
   <div class="row">{{ column_left }}
     <div id="content" class="col">{{ content_top }}
-      <h1>{{ text_my_account }}</h1>
-      <ul class="list-unstyled">
-        <li><a href="{{ edit }}">{{ text_edit }}</a></li>
-        <li><a href="{{ password }}">{{ text_password }}</a></li>
-        <li><a href="{{ payment_method }}">{{ text_payment_method }}</a></li>
-        <li><a href="{{ address }}">{{ text_address }}</a></li>
-        <li><a href="{{ wishlist }}">{{ text_wishlist }}</a></li>
-      </ul>
-      <h2>{{ text_my_orders }}</h2>
-      <ul class="list-unstyled">
-        <li><a href="{{ order }}">{{ text_order }}</a></li>
-        <li><a href="{{ subscription }}">{{ text_subscription }}</a></li>
-        <li><a href="{{ download }}">{{ text_download }}</a></li>
+      <h1 class="mb-4">{{ text_my_account }}</h1>
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 mb-5">
+        <div class="col"><a href="{{ edit }}" class="va-account-card"><i class="fa-solid fa-user-pen"></i><span>{{ text_edit }}</span></a></div>
+        <div class="col"><a href="{{ password }}" class="va-account-card"><i class="fa-solid fa-lock"></i><span>{{ text_password }}</span></a></div>
+        <div class="col"><a href="{{ payment_method }}" class="va-account-card"><i class="fa-solid fa-credit-card"></i><span>{{ text_payment_method }}</span></a></div>
+        <div class="col"><a href="{{ address }}" class="va-account-card"><i class="fa-solid fa-map-location-dot"></i><span>{{ text_address }}</span></a></div>
+        <div class="col"><a href="{{ wishlist }}" class="va-account-card"><i class="fa-solid fa-heart"></i><span>{{ text_wishlist }}</span></a></div>
+      </div>
+      <h2 class="mb-3">{{ text_my_orders }}</h2>
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 mb-5">
+        <div class="col"><a href="{{ order }}" class="va-account-card"><i class="fa-solid fa-receipt"></i><span>{{ text_order }}</span></a></div>
+        <div class="col"><a href="{{ subscription }}" class="va-account-card"><i class="fa-solid fa-arrows-rotate"></i><span>{{ text_subscription }}</span></a></div>
+        <div class="col"><a href="{{ download }}" class="va-account-card"><i class="fa-solid fa-download"></i><span>{{ text_download }}</span></a></div>
         {% if reward %}
-          <li><a href="{{ reward }}">{{ text_reward }}</a></li>
+          <div class="col"><a href="{{ reward }}" class="va-account-card"><i class="fa-solid fa-gift"></i><span>{{ text_reward }}</span></a></div>
         {% endif %}
-        <li><a href="{{ return }}">{{ text_return }}</a></li>
-        <li><a href="{{ transaction }}">{{ text_transaction }}</a></li>
-      </ul>
+        <div class="col"><a href="{{ return }}" class="va-account-card"><i class="fa-solid fa-rotate-left"></i><span>{{ text_return }}</span></a></div>
+        <div class="col"><a href="{{ transaction }}" class="va-account-card"><i class="fa-solid fa-scale-balanced"></i><span>{{ text_transaction }}</span></a></div>
+      </div>
       {% if affiliate %}
-        <h2>{{ text_my_affiliate }}</h2>
-        <ul class="list-unstyled">
+        <h2 class="mb-3">{{ text_my_affiliate }}</h2>
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 mb-5">
           {% if not tracking %}
-            <li><a href="{{ affiliate }}">{{ text_affiliate_add }}</a></li>
+            <div class="col"><a href="{{ affiliate }}" class="va-account-card"><i class="fa-solid fa-hand-holding-dollar"></i><span>{{ text_affiliate_add }}</span></a></div>
           {% else %}
-            <li><a href="{{ affiliate }}">{{ text_affiliate_edit }}</a></li>
-            <li><a href="{{ tracking }}">{{ text_tracking }}</a></li>
+            <div class="col"><a href="{{ affiliate }}" class="va-account-card"><i class="fa-solid fa-hand-holding-dollar"></i><span>{{ text_affiliate_edit }}</span></a></div>
+            <div class="col"><a href="{{ tracking }}" class="va-account-card"><i class="fa-solid fa-chart-line"></i><span>{{ text_tracking }}</span></a></div>
           {% endif %}
-        </ul>
+        </div>
       {% endif %}
-      <h2>{{ text_my_newsletter }}</h2>
-      <ul class="list-unstyled">
-          <li><a href="{{ newsletter }}">{{ text_newsletter }}</a></li>
-      </ul>
+      <h2 class="mb-3">{{ text_my_newsletter }}</h2>
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+        <div class="col"><a href="{{ newsletter }}" class="va-account-card"><i class="fa-solid fa-envelope-open-text"></i><span>{{ text_newsletter }}</span></a></div>
+      </div>
       {{ content_bottom }}</div>
     {{ column_right }}</div>
 </div>
