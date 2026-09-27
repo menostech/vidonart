@@ -1,3 +1,7 @@
+---
+archived-with: 2026-09-27-customize-toggle
+status: final
+---
 ﻿---
 change: customize-toggle
 design-doc: docs/openspec/changes/customize-toggle/design.md

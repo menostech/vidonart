@@ -1,0 +1,13 @@
+PASS: admin controller exposes setting
+PASS: admin switch input present
+PASS: admin language key present
+PASS: menu flag
+PASS: menu guard
+PASS: home flag
+PASS: home guard
+PASS: thumb flag
+PASS: thumb guard
+PASS: product flag
+PASS: product guard
+PASS: direct custom URL ungated
+RESULT: ALL PASS
