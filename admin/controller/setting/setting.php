@@ -240,6 +240,11 @@ class Setting extends \Opencart\System\Engine\Controller {
 		// Checkout
 		$data['config_cart_weight'] = $this->config->get('config_cart_weight');
 		$data['config_checkout_guest'] = $this->config->get('config_checkout_guest');
+		$data['config_customize_status'] = $this->config->get('config_customize_status');
+
+		if ($data['config_customize_status'] === null) {
+			$data['config_customize_status'] = true;
+		}
 		$data['config_checkout_payment_address'] = $this->config->get('config_checkout_payment_address');
 		$data['config_checkout_shipping_address'] = $this->config->get('config_checkout_shipping_address');
 		$data['config_checkout_id'] = $this->config->get('config_checkout_id');
