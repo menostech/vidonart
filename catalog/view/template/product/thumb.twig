@@ -35,7 +35,7 @@
           {% endfor %}
         </div>
       {% endif %}
-      <a href="index.php?route=information/custom&product_id={{ product_id }}" class="va-customize">{{ text_customize }} →</a>
+      {% if show_customize %}<a href="index.php?route=information/custom&product_id={{ product_id }}" class="va-customize">{{ text_customize }} →</a>{% endif %}
     </div>
     <form method="post" data-oc-toggle="ajax" data-oc-load="{{ cart }}" data-oc-target="#cart">
       <div class="button">

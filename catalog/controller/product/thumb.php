@@ -81,6 +81,10 @@ class Thumb extends \Opencart\System\Engine\Controller {
 			}
 		}
 
+		$customize_status = $this->config->get('config_customize_status');
+
+		$data['show_customize'] = ($customize_status === null || $customize_status === '' || (bool)$customize_status);
+
 		return $this->load->view('product/thumb', $data);
 	}
 }
