@@ -77,11 +77,13 @@
               {% endif %}
             </ul>
           {% endif %}
+          {% if show_customize %}
           <div class="va-custom-block">
             <p class="va-custom-title">{{ text_custom_title }}</p>
             <p class="va-custom-copy">{{ text_custom_copy }}</p>
             <a href="index.php?route=information/custom&product_id={{ product_id }}" class="btn btn-outline-dark">{{ button_customize }}</a>
           </div>
+          {% endif %}
           <form method="post" data-oc-toggle="ajax">
             <div class="btn-group">
               <button type="submit" formaction="{{ wishlist_add }}" data-bs-toggle="tooltip" class="btn btn-light btn-lg" title="{{ button_wishlist }}"><i class="fa-solid fa-heart"></i></button>

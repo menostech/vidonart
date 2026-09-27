@@ -463,6 +463,10 @@ class Product extends \Opencart\System\Engine\Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
+			$customize_status = $this->config->get('config_customize_status');
+
+			$data['show_customize'] = ($customize_status === null || $customize_status === '' || (bool)$customize_status);
+
 			$this->response->setOutput($this->load->view('product/product', $data));
 		} else {
 			return new \Opencart\System\Engine\Action('error/not_found');
