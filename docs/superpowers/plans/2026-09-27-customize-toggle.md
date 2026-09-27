@@ -98,7 +98,7 @@ git commit -m "feat: customize visibility toggle in store settings"
 - Consumes: Task 1's setting field.
 - Produces: confirmed persistence behavior for Tasks 3鈥?.
 
-<!-- comet-task-ref:bcf3320b-02b3-4a67-be97-147854a7c40 -->
+<!-- comet-task-ref:bcf3320b-02b3-4a67-be97-147854a7c40b -->
 
 **Step 1: Verify the save path needs no controller change**
 
@@ -118,7 +118,7 @@ If no code change was needed, there is nothing to commit 鈥?mark the task done 
 - Consumes: `config_customize_status` setting from Task 1.
 - Produces: `show_customize` boolean in menu view data.
 
-<!-- comet-task-ref:3c750b05-c5e9-4d6d-a469-e727d265067 -->
+<!-- comet-task-ref:3c750b05-c5e9-4d6d-a469-e727d265067e -->
 
 **Step 1: Pass the flag in the controller**
 
@@ -163,7 +163,7 @@ git commit -m "feat: gate nav custom order item on customize toggle"
 - Consumes: `config_customize_status` setting from Task 1.
 - Produces: `show_customize` boolean in home view data.
 
-<!-- comet-task-ref:78752971-7363-4a5a-9efb-fb857ad266b -->
+<!-- comet-task-ref:78752971-7363-4a5a-9efb-fb857ad266b6 -->
 
 **Step 1: Pass the flag in the controller**
 
