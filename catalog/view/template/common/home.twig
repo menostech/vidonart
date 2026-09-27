@@ -41,6 +41,7 @@
     </section>
   {% endif %}
 
+  {% if show_customize %}
   <section class="va-cta-band">
     <div class="container">
       <h2>{{ text_cta_title }}</h2>
@@ -48,6 +49,7 @@
       <a href="{{ custom }}" class="btn va-btn-gold btn-lg">{{ text_start_custom }}</a>
     </div>
   </section>
+  {% endif %}
 
   {{ content_bottom }}
 </div>

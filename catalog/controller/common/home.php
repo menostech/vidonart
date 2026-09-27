@@ -101,6 +101,10 @@ class Home extends \Opencart\System\Engine\Controller {
 		$data['featured_all'] = $data['collections'] ? $data['collections'][0]['href'] : $this->url->link('common/home', 'language=' . $this->config->get('config_language'));
 		$data['custom'] = $this->url->link('information/custom', 'language=' . $this->config->get('config_language'));
 
+		$customize_status = $this->config->get('config_customize_status');
+
+		$data['show_customize'] = ($customize_status === null || $customize_status === '' || (bool)$customize_status);
+
 		$data['content_top'] = $this->load->controller('common/content_top');
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');
