@@ -38,7 +38,7 @@
               <li class="nav-item"><a href="{{ category.href }}" class="dropdown-item">{{ category.name }}</a></li>
             {% endif %}
           {% endfor %}
-        <li class="nav-item"><a href="{{ custom }}" class="nav-link va-nav-custom">{{ text_custom_order }}</a></li>
+        {% if show_customize %}<li class="nav-item"><a href="{{ custom }}" class="nav-link va-nav-custom">{{ text_custom_order }}</a></li>{% endif %}
         </ul>
       </div>
     </nav>
