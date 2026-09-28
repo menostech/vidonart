@@ -157,6 +157,13 @@
                 </div>
               </div>
               <div class="row mb-3">
+                <label for="input-topbar-text" class="col-sm-2 col-form-label">{{ entry_topbar_text }}</label>
+                <div class="col-sm-10">
+                  <input type="text" name="config_topbar_text" value="{{ config_topbar_text }}" placeholder="{{ entry_topbar_text }}" id="input-topbar-text" class="form-control"/>
+                  <div id="error-topbar-text" class="invalid-feedback"></div>
+                </div>
+              </div>
+              <div class="row mb-3">
                 <label for="input-image" class="col-sm-2 col-form-label">{{ entry_image }}</label>
                 <div class="col-sm-10">
                   <div class="border rounded d-block" style="max-width: 300px;">
