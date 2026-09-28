@@ -1,0 +1,16 @@
+{
+  "change": "topbar-custom-text",
+  "phase": "design",
+  "mode": "compact",
+  "canonical_spec": "openspec",
+  "task_hash_policy": "task-content-v1",
+  "generated_by": "comet-handoff.sh",
+  "context_hash": "ac0d9ad4cb13aaa9446e359b90f7d832280407121d0468d6d618434cb1c4a9d8",
+  "files": [
+    { "path": "docs/openspec/changes/topbar-custom-text/proposal.md", "sha256": "822682a4c5c9c0c83bd62c608b8850789fd9a9f40f532c3b74f36fc588aa36e5" },
+    { "path": "docs/openspec/changes/topbar-custom-text/design.md", "sha256": "7e74c5b98441058226c2a31ab3f9c5672136afff1e5d70571cbd9e7cefc4f45e" },
+    { "path": "docs/openspec/changes/topbar-custom-text/tasks.md", "sha256": "ccca7252756b987bdeb53abdda6af6573120e014efaabf11a739457b4da2ff8d" },
+    { "path": "docs/openspec/changes/topbar-custom-text/.openspec.yaml", "sha256": "d707823457f58b4f938a99bc049bddd9b937affec2d09c976c9a16a9dcd03f77" },
+    { "path": "docs/openspec/changes/topbar-custom-text/specs/topbar-custom-text/spec.md", "sha256": "1ba329ec9c88c367107cfb239db104979c9406edb5ccc5082d1f64865b25072b" }
+  ]
+}

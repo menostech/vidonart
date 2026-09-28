@@ -1,0 +1,8 @@
+PASS: admin controller exposes setting
+PASS: admin text input present
+PASS: admin language key present
+PASS: header passthrough
+PASS: empty-text guard
+PASS: language right-grouped
+PASS: currency right-grouped
+RESULT: ALL PASS
