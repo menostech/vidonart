@@ -1,0 +1,5 @@
+PASS: span wrap in template
+PASS: empty-text guard intact
+PASS: scoped scss rule
+PASS: compiled css has rule
+RESULT: ALL PASS
