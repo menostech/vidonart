@@ -1,0 +1,23 @@
+PASS: admin controller passes config_footer_logo
+PASS: admin controller passes config_footer_tagline
+PASS: admin controller passes config_footer_about
+PASS: admin controller builds footer_logo_thumb
+PASS: admin form field config_footer_logo
+PASS: admin form field config_footer_tagline
+PASS: admin form field config_footer_about
+PASS: footer logo filemanager widget
+PASS: admin language entry_footer_logo
+PASS: admin language entry_footer_tagline
+PASS: admin language entry_footer_about
+PASS: footer controller passes name
+PASS: footer controller passes footer_logo
+PASS: footer controller reads config_footer_tagline
+PASS: footer controller reads config_footer_about
+PASS: footer template logo conditional
+PASS: footer template renders tagline
+PASS: footer template renders about
+PASS: scss footer logo img rule
+PASS: compiled css footer logo img rule
+PASS: no hardcoded brand literals in footer brand block
+---
+RESULT: ALL PASS (21)
