@@ -64,6 +64,24 @@ class Footer extends \Opencart\System\Engine\Controller {
 
 		$data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
 
+		// Footer brand (admin-editable, empty values fall back to current defaults)
+		$data['name'] = $this->config->get('config_name');
+
+		$data['footer_logo'] = '';
+		if (is_file(DIR_IMAGE . $this->config->get('config_footer_logo'))) {
+			$data['footer_logo'] = $this->config->get('config_url') . 'image/' . $this->config->get('config_footer_logo');
+		}
+
+		$data['footer_tagline'] = $this->config->get('config_footer_tagline');
+		if (!$data['footer_tagline']) {
+			$data['footer_tagline'] = 'Oriental Heritage · Modern Craft';
+		}
+
+		$data['footer_about'] = $this->config->get('config_footer_about');
+		if (!$data['footer_about']) {
+			$data['footer_about'] = $this->language->get('text_about');
+		}
+
 		// Who's Online
 		if ($this->config->get('config_customer_online')) {
 			$this->load->model('tool/online');

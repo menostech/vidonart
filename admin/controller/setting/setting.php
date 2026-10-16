@@ -75,6 +75,9 @@ class Setting extends \Opencart\System\Engine\Controller {
 		$data['config_email'] = $this->config->get('config_email');
 		$data['config_telephone'] = $this->config->get('config_telephone');
 		$data['config_topbar_text'] = $this->config->get('config_topbar_text');
+		$data['config_footer_logo'] = $this->config->get('config_footer_logo');
+		$data['config_footer_tagline'] = $this->config->get('config_footer_tagline');
+		$data['config_footer_about'] = $this->config->get('config_footer_about');
 
 		// Image
 		$data['config_image'] = $this->config->get('config_image');
@@ -395,6 +398,13 @@ class Setting extends \Opencart\System\Engine\Controller {
 			$data['icon'] = $this->model_tool_image->resize($data['config_icon'], $this->config->get('config_image_default_width'), $this->config->get('config_image_default_height'));
 		} else {
 			$data['icon'] = '';
+		}
+
+		// Footer Logo
+		if (!empty($data['config_footer_logo']) && is_file(DIR_IMAGE . html_entity_decode($data['config_footer_logo'], ENT_QUOTES, 'UTF-8'))) {
+			$data['footer_logo_thumb'] = $this->model_tool_image->resize($data['config_footer_logo'], $this->config->get('config_image_default_width'), $this->config->get('config_image_default_height'));
+		} else {
+			$data['footer_logo_thumb'] = $data['placeholder'];
 		}
 
 		// Image
