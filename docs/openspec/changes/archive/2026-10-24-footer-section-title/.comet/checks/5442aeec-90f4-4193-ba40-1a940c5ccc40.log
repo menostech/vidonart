@@ -1,0 +1,6 @@
+PASS: scss footer h5 rule present
+PASS: scss footer h5 weight 700
+PASS: compiled css footer h5 weight 700
+PASS: old 600 weight removed from footer h5
+---
+RESULT: ALL PASS (4)
